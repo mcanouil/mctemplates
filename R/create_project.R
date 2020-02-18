@@ -5,12 +5,11 @@
 #' @param path A path. If it exists, it is used.
 #'   If it does not exist, it is created, provided that the parent path exists.
 #' @param git If TRUE, init git.
-#' @param private If TRUE, creates a private repository.
 #'
 #' @return Path to the newly created project or package, invisibly.
 #'
 #' @export
-create_project <- function(path, git = TRUE, private = FALSE) {
+create_project <- function(path, git = TRUE) {
   old_project <- usethis::proj_set(path, force = TRUE)
   on.exit(usethis::proj_set(old_project), add = TRUE)
 
@@ -67,8 +66,8 @@ create_project <- function(path, git = TRUE, private = FALSE) {
 
   usethis::use_readme_md(open = FALSE)
   if (git) {
-    usethis::use_git()
-    if (usethis::github_token() != "") usethis::use_github(private = private)
+    git2r::init(usethis::proj_get())
+    git2r::commit(repo = usethis::proj_get(), message = "Init project", all = TRUE)
   }
 
   invisible(usethis::proj_get())

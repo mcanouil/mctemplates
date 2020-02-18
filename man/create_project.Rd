@@ -4,15 +4,13 @@
 \alias{create_project}
 \title{create_project}
 \usage{
-create_project(path, git = TRUE, private = FALSE)
+create_project(path, git = TRUE)
 }
 \arguments{
 \item{path}{A path. If it exists, it is used.
 If it does not exist, it is created, provided that the parent path exists.}
 
 \item{git}{If TRUE, init git.}
-
-\item{private}{If TRUE, creates a private repository.}
 }
 \value{
 Path to the newly created project or package, invisibly.
