@@ -1,0 +1,75 @@
+#' create_project
+#'
+#' This function create an R project
+#'
+#' @param path A path. If it exists, it is used.
+#'   If it does not exist, it is created, provided that the parent path exists.
+#' @param git If TRUE, init git.
+#' @param private If TRUE, creates a private repository.
+#'
+#' @return Path to the newly created project or package, invisibly.
+#'
+#' @export
+create_project <- function(path, git = TRUE, private = FALSE) {
+  old_project <- usethis::proj_set(path, force = TRUE)
+  on.exit(usethis::proj_set(old_project), add = TRUE)
+
+  usethis::use_directory("R")
+  usethis::use_directory("docs")
+  usethis::use_directory("data")
+  usethis::use_directory("reports")
+
+  rproj <- c(
+    "Version: 1.0",
+    "",
+    "RestoreWorkspace: No",
+    "SaveWorkspace: No",
+    "AlwaysSaveHistory: No",
+    "",
+    "EnableCodeIndexing: Yes",
+    "UseSpacesForTab: Yes",
+    "NumSpacesForTab: 2",
+    "Encoding: UTF-8",
+    "",
+    "RnwWeave: knitr",
+    "LaTeX: pdfLaTeX",
+    "",
+    "AutoAppendNewline: Yes",
+    "",
+    "QuitChildProcessesOnExit: Yes"
+  )
+  writeLines(rproj, con = usethis::proj_path(paste0(basename(path), ".Rproj")))
+
+  gitignore <- c(
+    ".Rhistory",
+    ".RData",
+    ".Rproj.user",
+    "**.RData",
+    "**.Rdata",
+    "**.Ruserdata",
+    "**.rdb",
+    "**.rdx",
+    "**.glo",
+    "**.ist",
+    "**.out",
+    "**.nav",
+    "**.log",
+    "**.bbl",
+    "**.blg",
+    "**.aux",
+    "**.toc",
+    "**.snm",
+    "data",
+    "R/*.html",
+    "R/*.pdf"
+  )
+  writeLines(gitignore, con = usethis::proj_path(".gitignore"))
+
+  usethis::use_readme_md(open = FALSE)
+  if (git) {
+    usethis::use_git()
+    if (usethis::github_token() != "") usethis::use_github(private = private)
+  }
+
+  invisible(usethis::proj_get())
+}

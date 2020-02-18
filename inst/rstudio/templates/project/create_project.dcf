@@ -1,0 +1,15 @@
+Binding: create_project
+Title: Mickaël CANOUIL - RStudio Project Templates
+OpenFiles: README.md
+
+Parameter: git
+Widget: CheckboxInput
+Label: Use git
+Default: true
+Position: left
+
+Parameter: private
+Widget: CheckboxInput
+Label: Use private GitHub repository (GitHub token)
+Default: true
+Position: right
