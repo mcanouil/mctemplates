@@ -19,7 +19,10 @@ ioslides_presentation <- function(
 ) {
   csl <- system.file("rmarkdown/templates/ioslides/resources/csl/apa.csl", package = "mctemplates")
   rmarkdown::ioslides_presentation(
-    css = system.file("rmarkdown/templates/ioslides/resources/mc_theme.css", package = "mctemplates"),
+    css = c(
+      system.file("rmarkdown/templates/ioslides/resources/mc_theme.css", package = "mctemplates"),
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    ),
     logo = system.file("rmarkdown/templates/ioslides/resources/logo_UMR.png", package = "mctemplates"),
     pandoc_args = paste0("--csl=", csl),
     ...
