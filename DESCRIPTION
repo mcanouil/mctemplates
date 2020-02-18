@@ -1,0 +1,17 @@
+Package: mctemplates
+Title: Mickaël Canouil's Rmarkdown templates
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Mickaël",
+           family = "Canouil",
+           role = c("aut", "cre"),
+           email = "mickael.canouil@cnrs.fr",
+           comment = c(ORCID = "0000-0002-3396-4549"))
+Description: Some templates to work sith Rmarkdown or Rstudio.
+License: GPL-3
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
