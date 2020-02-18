@@ -1,5 +1,5 @@
 Package: mctemplates
-Title: Mickaël Canouil's Rmarkdown templates
+Title: Mickaël Canouil's Rmarkdown & Rstudio templates
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Mickaël",
@@ -15,8 +15,6 @@ Imports:
     bookdown (>= 0.17),
     rmarkdown (>= 2.1),
     usethis (>= 1.5.1)
-Suggests: 
-    testthat (>= 2.3.1)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

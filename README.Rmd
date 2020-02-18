@@ -20,4 +20,4 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/mctemplates)](https://CRAN.R-project.org/package=mctemplates)
 <!-- badges: end -->
 
-Some templates to work sith Rmarkdown or Rstudio.
+Some templates to work sith Rmarkdown and Rstudio.
