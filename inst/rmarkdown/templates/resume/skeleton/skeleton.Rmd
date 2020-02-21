@@ -1,0 +1,55 @@
+---
+params:
+  author: "your name"
+  xlsx: "data/cv.xlsx"
+  bib: "data/cv.bib"
+  picture: "data/cv.png"
+title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
+author: '`r params[["author"]]`'
+output:
+  pagedown::html_resume:
+    css: ["utils/curriculum_vitae.css", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"]
+    mathjax: null
+    includes:
+      in_header: "utils/_ga_script.html"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+options(stringsAsFactors = FALSE)
+knitr::opts_chunk$set(
+  results = "asis", 
+  eval = TRUE, 
+  echo = FALSE, 
+  message = FALSE, 
+  error = FALSE, 
+  warning = FALSE
+)
+source("utils/cv.R")
+```
+
+# Aside
+
+```{r, out.extra = 'style="width: 226px;" id="picture"'}
+knitr::include_graphics(params[["picture"]])
+```
+
+```{r}
+cat(
+  contact_section(xlsx = params[["xlsx"]], sheet = "contact"),
+  skills_section(xlsx = params[["xlsx"]], sheet = "skills"),
+  disclaimer_section(text = NULL),
+  title_section(author = params[["author"]]),
+  profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
+  education_section(xlsx = params[["xlsx"]], sheet = "education"),
+  experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = TRUE),
+  teaching_section(xlsx = params[["xlsx"]], sheet = "teaching"),
+  awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
+  oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
+  poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
+  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
+  articles_section(bib = params[["bib"]], author = params[["author"]]),
+  sep = "\n"
+)
+```
