@@ -1,0 +1,9 @@
+Binding: create_ioslides
+Title: Mickaël CANOUIL - RStudio Project Templates for ioslides
+OpenFiles: index.Rmd
+
+Parameter: git
+Widget: CheckboxInput
+Label: Use git
+Default: true
+Position: left
