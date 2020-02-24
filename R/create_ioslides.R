@@ -13,6 +13,11 @@ create_ioslides <- function(path, git = TRUE) {
   old_project <- usethis::proj_set(path, force = TRUE)
   on.exit(usethis::proj_set(old_project), add = TRUE)
 
+  dir.create(
+    path = usethis::proj_path(),
+    recursive = TRUE, showWarnings = FALSE, mode = "0775"
+  )
+
   rproj <- c(
     "Version: 1.0",
     "",
