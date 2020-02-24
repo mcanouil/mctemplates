@@ -56,9 +56,9 @@ create_ioslides <- function(path, git = TRUE) {
   writeLines(gitignore, con = usethis::proj_path(".gitignore"))
 
   rbuildignore <- c(
-    "^.*\.Rproj$",
-    "^\.Rproj\.user$",
-    "^\.travis\.yml$"
+    "^.*\\.Rproj$",
+    "^\\.Rproj\\.user$",
+    "^\\.travis\\.yml$"
   )
   writeLines(rbuildignore, con = usethis::proj_path(".Rbuildignore"))
 
