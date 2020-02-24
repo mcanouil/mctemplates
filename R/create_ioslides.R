@@ -67,16 +67,6 @@ create_ioslides <- function(path, git = TRUE) {
   )
   writeLines(rbuildignore, con = usethis::proj_path(".Rbuildignore"))
 
-  readme <- c(
-    paste("#", basename(path)),
-    "\n",
-    "<!-- badges: start -->",
-    "<!-- badges: end -->",
-    "\n",
-    paste0("This is the work-in-progress repo for the slides about ", basename(path), ".")
-  )
-  writeLines(readme, con = usethis::proj_path("README.md"))
-
   description <- c(
     paste("Package: ", basename(path)),
     paste("Title:", basename(path)),
@@ -87,7 +77,7 @@ create_ioslides <- function(path, git = TRUE) {
     "    knitr,",
     "    kableExtra"
   )
-  writeLines(readme, con = usethis::proj_path("DESCRIPTION"))
+  writeLines(description, con = usethis::proj_path("DESCRIPTION"))
 
   file.copy(
     from = system.file(
@@ -97,7 +87,13 @@ create_ioslides <- function(path, git = TRUE) {
     to = "index.Rmd"
   )
 
-  usethis::use_readme_md(open = FALSE)
+  readme <- c(
+    paste("#", basename(path)),
+    "\n<!-- badges: start -->", "<!-- badges: end -->\n",
+    paste0("This is the work-in-progress repo for the slides about ", basename(path), ".")
+  )
+  writeLines(readme, con = usethis::proj_path("README.md"))
+
   if (git) {
     git2r::init(usethis::proj_get())
     git2r::add(usethis::proj_get(), "*")
