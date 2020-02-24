@@ -15,15 +15,19 @@ ioslides_presentation <- function(
   fig_height = 3.30,
   transition = 0.5,
   incremental = FALSE,
+  logo = NULL,
   ...
 ) {
   csl <- system.file("rmarkdown", "templates", "ioslides", "resources", "csl", "apa.csl", package = "mctemplates")
+  if (is.null(logo)) {
+    logo <- system.file("rmarkdown", "templates", "ioslides", "resources", "logo_UMR.png", package = "mctemplates")
+  }
   rmarkdown::ioslides_presentation(
     css = c(
       system.file("rmarkdown", "templates", "ioslides", "resources", "mc_theme.css", package = "mctemplates"),
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     ),
-    logo = system.file("rmarkdown", "templates", "ioslides", "resources", "logo_UMR.png", package = "mctemplates"),
+    logo = logo,
     pandoc_args = paste0("--csl=", csl),
     ...
   )
