@@ -84,7 +84,7 @@ create_ioslides <- function(path, git = TRUE) {
       "rmarkdown", "templates", "ioslides", "skeleton", "skeleton.Rmd",
       package = "mctemplates"
     ),
-    to = "index.Rmd"
+    to = usethis::proj_path("index.Rmd")
   )
 
   readme <- c(
