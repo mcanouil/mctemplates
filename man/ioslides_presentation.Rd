@@ -12,6 +12,7 @@ ioslides_presentation(
   fig_height = 3.3,
   transition = 0.5,
   incremental = FALSE,
+  logo = NULL,
   ...
 )
 }
@@ -42,6 +43,9 @@ its size).}
 Note that if you want to reverse the default incremental behavior for an
 individual bullet you can preceded it with \code{>}.
 For example: \emph{\code{> - Bullet Text}}.}
+
+\item{logo}{Path to file that includes a logo for use in the presentation
+(should be square and at least 128x128).}
 
 \item{...}{Arguments to be passed to a specific output format function \code{rmarkdown::ioslides_presentation}}
 }
