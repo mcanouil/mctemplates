@@ -9,6 +9,6 @@
 * Added a RStudio project template `Mickaël CANOUIL - RStudio Project Templates for ioslides`
 * Added Rmarkdown templates for:
     - ioslides - `MC - ioslides`
-    - PowerPoint - `MC - PowerPoint Template`
-    - report - `MC - Analysis Report Template`
-    - resume - `MC - HTML resume template that can be printed to PDF`
+    - PowerPoint - `MC - PowerPoint`
+    - report - `MC - Report`
+    - resume - `MC - Resume`
