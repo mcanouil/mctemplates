@@ -11,11 +11,17 @@ Description: Some templates to work sith Rmarkdown or Rstudio.
 License: GPL-3
 URL: https://github.com/mcanouil/mctemplates
 BugReports: https://github.com/mcanouil/mctemplates/issues
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     bookdown (>= 0.17),
+    ggplot2 (>= 3.2.1),
     git2r (>= 0.26.1),
+    grDevices,
+    grid,
     rmarkdown (>= 2.1),
-    usethis (>= 1.5.1)
+    usethis (>= 1.5.1),
+    utils
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
