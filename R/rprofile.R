@@ -33,28 +33,48 @@ mcprofile <- function(
     right = crayon::blue("MC")
   )))
 
+  if (.Platform$OS.type == "unix" & !is.null(LANGUAGE)) {
+    cli::cat_line(
+      glue::glue(
+        '{crayon::red(clisymbols::symbol$bullet)} Set {crayon::blue("locales")}'
+      )
+    )
+    invisible(lapply(
+      X = c(
+        "LC_ALL", "LC_CTYPE", "LC_TIME", "LC_COLLATE", "LC_MONETARY",
+        "LC_MESSAGES", "LC_PAPER", "LC_MEASUREMENT"
+      ),
+      FUN = Sys.setlocale, locale = LANGUAGE
+    ))
+    cli::cat_line(
+      glue::glue(.sep = " ",
+        "{crayon::green(clisymbols::symbol$tick)}",
+        "{crayon::green('locales')} set to {crayon::blue(LANGUAGE)}"
+      )
+    )
+  }
+
   cli::cat_line(
     glue::glue(
       '{crayon::red(clisymbols::symbol$bullet)} Write & load {crayon::blue(".Renviron")}'
     )
   )
-  cat(
+  env_var <- c(
     if (!is.null(LANGUAGE)) glue::glue("LANGUAGE='{LANGUAGE}'"),
     if (!is.null(R_MAX_NUM_DLLS)) glue::glue("R_MAX_NUM_DLLS={R_MAX_NUM_DLLS}"),
     if (!is.null(GITHUB_PAT)) glue::glue("GITHUB_PAT={GITHUB_PAT}"),
     if (!is.null(GITLAB_PAT)) glue::glue("GITLAB_PAT={GITLAB_PAT}"),
     if (!is.null(TZ)) glue::glue("TZ='{TZ}'"),
-    if (!is.null(R_LIBS_USER)) glue::glue("R_LIBS_USER={R_LIBS_USER}"),
-    sep = "\n",
-    file = .Renviron
+    if (!is.null(R_LIBS_USER)) glue::glue("R_LIBS_USER={R_LIBS_USER}")
   )
+  cat(env_var, sep = "\n", file = .Renviron)
   readRenviron(path = .Renviron)
   for (ienv in readLines(.Renviron)) {
     if (grepl("^GIT", ienv)) ienv <- gsub("(.*=).*", "\\1=XXXXXXXX", ienv)
     cli::cat_line(
       glue::glue(.sep = " ",
         "{crayon::blue(clisymbols::symbol$info)}",
-        "{crayon::green(paste0(\"'\", gsub('=.*$', '', ienv), \"'\"))}",
+        "{crayon::green(gsub('=.*$', '', ienv))}",
         "set to {crayon::blue(gsub('^.*=', '', ienv))}"
       )
     )
@@ -114,7 +134,7 @@ mcprofile <- function(
     temp <- options('usethis.description')[[1]][[idesc]]
     cli::cat_line(
       glue::glue(.sep = " ",
-        "  {crayon::blue(clisymbols::symbol$info)} {crayon::green(paste0(\"'\", idesc, \"'\"))}",
+        "  {crayon::blue(clisymbols::symbol$info)} {crayon::green(idesc)}",
         "set to {crayon::blue(if (nchar(temp) > 12) '...' else temp)}"
       )
     )
@@ -127,13 +147,13 @@ mcprofile <- function(
       if (require(x, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)) {
         cli::cat_line(
           glue::glue(
-            "{crayon::green(clisymbols::symbol$tick)} {crayon::blue(paste0(\"'\", x, \"'\"))}"
+            "{crayon::green(clisymbols::symbol$tick)} {crayon::blue(x)}"
           )
         )
       } else {
         cli::cat_line(
           glue::glue(
-            "{crayon::red(clisymbols::symbol$cross)} {crayon::blue(paste0(\"'\", x, \"'\"))}"
+            "{crayon::red(clisymbols::symbol$cross)} {crayon::blue(x)}"
           )
         )
       }
