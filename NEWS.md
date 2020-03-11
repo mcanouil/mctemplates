@@ -1,3 +1,9 @@
+# mctemplates (development version)
+
+## New feature
+
+* `mcprofile()` allows to setup .Rprofile with a predefined configuration.
+
 # mctemplates 0.1.0
 
 ## New features

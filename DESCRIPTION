@@ -1,6 +1,6 @@
 Package: mctemplates
 Title: Mickaël Canouil's Rmarkdown & Rstudio templates
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "Mickaël",
            family = "Canouil",
@@ -11,17 +11,20 @@ Description: Some templates to work sith Rmarkdown or Rstudio.
 License: GPL-3
 URL: https://github.com/mcanouil/mctemplates
 BugReports: https://github.com/mcanouil/mctemplates/issues
-Depends: 
-    R (>= 3.5.0)
+Depends: R (>= 3.5.0)
 Imports: 
-    bookdown (>= 0.17),
-    ggplot2 (>= 3.2.1),
-    git2r (>= 0.26.1),
     grDevices,
     grid,
+    utils,
+    bookdown (>= 0.17),
+    cli (>= 2.0.2),
+    clisymbols (>= 1.2.0),
+    crayon (>= 1.3.4),
+    ggplot2 (>= 3.2.1),
+    git2r (>= 0.26.1),
+    glue (>= 1.3.1),
     rmarkdown (>= 2.1),
-    usethis (>= 1.5.1),
-    utils
+    usethis (>= 1.5.1)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
