@@ -1,3 +1,13 @@
+# mctemplates (development version)
+
+## New feature
+
+* `mcprofile()` allows to set locales on unix-like machine.
+
+## Minor improvements and fixes
+
+* Fix empty lines in `.Renviron` written with `mcprofile()`.
+
 # mctemplates 0.2.0
 
 ## New feature
