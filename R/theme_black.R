@@ -14,24 +14,24 @@ theme_black <- function(
   base_rect_size = base_size / 22
 ) {
   half_line <- base_size / 2
-  base_colours <- c("grey20", "grey50", "white")
-  ggplot2::theme(
+  bc <- c("grey20", "grey50", "white")
+  l <- ggplot2::theme(
     line = ggplot2::element_line(
-      colour = base_colours[3],
+      colour = bc[3],
       size = base_line_size,
       linetype = 1,
       lineend = "butt"
     ),
     rect = ggplot2::element_rect(
-      fill = base_colours[1],
-      colour = base_colours[3],
+      fill = bc[1],
+      colour = bc[3],
       size = base_rect_size,
       linetype = 1
     ),
     text = ggplot2::element_text(
       family = base_family,
       face = "plain",
-      colour = base_colours[3],
+      colour = bc[3],
       size = base_size,
       lineheight = 0.9,
       hjust = 0.5,
@@ -40,16 +40,30 @@ theme_black <- function(
       margin = ggplot2::margin(),
       debug = FALSE
     ),
+    title = NULL,
+    aspect.ratio = NULL,
 
-    axis.line = ggplot2::element_blank(),
-    axis.line.x = NULL,
-    axis.line.y = NULL,
-    axis.text = ggplot2::element_text(size = ggplot2::rel(0.8), colour = base_colours[3]),
+    axis.title = NULL,
+    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = half_line), vjust = 1),
+    axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(b = half_line), vjust = 0),
+    axis.title.x.bottom = NULL,
+    axis.title.y = ggplot2::element_text(angle = 90, margin = ggplot2::margin(r = half_line), vjust = 1),
+    axis.title.y.left = NULL,
+    axis.title.y.right = ggplot2::element_text(angle = -90, margin = ggplot2::margin(l = half_line), vjust = 0),
+    axis.text = ggplot2::element_text(size = ggplot2::rel(0.8), colour = bc[3]),
     axis.text.x = ggplot2::element_text(margin = ggplot2::margin(t = 0.8 * half_line / 2), vjust = 1),
     axis.text.x.top = ggplot2::element_text(margin = ggplot2::margin(b = 0.8 * half_line / 2), vjust = 0),
+    axis.text.x.bottom = NULL,
     axis.text.y = ggplot2::element_text(margin = ggplot2::margin(r = 0.8 * half_line / 2), hjust = 1),
+    axis.text.y.left = NULL,
     axis.text.y.right = ggplot2::element_text(margin = ggplot2::margin(l = 0.8 * half_line / 2), hjust = 0),
-    axis.ticks = ggplot2::element_line(colour = base_colours[3]),
+    axis.ticks = ggplot2::element_line(colour = bc[3]),
+    axis.ticks.x = NULL,
+    axis.ticks.x.top = NULL,
+    axis.ticks.x.bottom = NULL,
+    axis.ticks.y = NULL,
+    axis.ticks.y.left = NULL,
+    axis.ticks.y.right = NULL,
     axis.ticks.length = ggplot2::unit(half_line / 2, "pt"),
     axis.ticks.length.x = NULL,
     axis.ticks.length.x.top = NULL,
@@ -57,17 +71,20 @@ theme_black <- function(
     axis.ticks.length.y = NULL,
     axis.ticks.length.y.left = NULL,
     axis.ticks.length.y.right = NULL,
-    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = half_line), vjust = 1),
-    axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(b = half_line), vjust = 0),
-    axis.title.y = ggplot2::element_text(angle = 90, margin = ggplot2::margin(r = half_line), vjust = 1),
-    axis.title.y.right = ggplot2::element_text(angle = -90, margin = ggplot2::margin(l = half_line), vjust = 0),
+    axis.line = ggplot2::element_blank(),
+    axis.line.x = NULL,
+    axis.line.x.top = NULL,
+    axis.line.x.bottom = NULL,
+    axis.line.y = NULL,
+    axis.line.y.left = NULL,
+    axis.line.y.right = NULL,
 
-    legend.background = ggplot2::element_rect(fill = base_colours[1], colour = NA),
+    legend.background = ggplot2::element_rect(fill = bc[1], colour = NA),
+    legend.margin = ggplot2::margin(half_line, half_line, half_line, half_line),
     legend.spacing = ggplot2::unit(2 * half_line, "pt"),
     legend.spacing.x = NULL,
     legend.spacing.y = NULL,
-    legend.margin = ggplot2::margin(half_line, half_line, half_line, half_line),
-    legend.key = ggplot2::element_rect(fill = base_colours[1], colour = base_colours[3]),
+    legend.key = ggplot2::element_rect(fill = bc[1], colour = bc[3]),
     legend.key.size = ggplot2::unit(1.2, "lines"),
     legend.key.height = NULL,
     legend.key.width = NULL,
@@ -79,40 +96,26 @@ theme_black <- function(
     legend.direction = NULL,
     legend.justification = "center",
     legend.box = NULL,
+    legend.box.just = NULL,
     legend.box.margin = ggplot2::margin(0, 0, 0, 0, "cm"),
     legend.box.background = ggplot2::element_blank(),
     legend.box.spacing = ggplot2::unit(2 * half_line, "pt"),
 
-    panel.background = ggplot2::element_rect(fill = base_colours[1], colour = NA),
-    panel.border = ggplot2::element_rect(
-      fill = NA,
-      colour = base_colours[3],
-      size = 0.5,
-      linetype = "solid"
-    ),
-    panel.grid = ggplot2::element_line(colour = base_colours[2]),
-    panel.grid.major = ggplot2::element_line(colour = base_colours[2]),
-    panel.grid.minor = ggplot2::element_line(colour = base_colours[2], size = ggplot2::rel(0.5)),
+    panel.background = ggplot2::element_rect(fill = bc[1], colour = NA),
+    panel.border = ggplot2::element_rect(fill = NA, colour = bc[3], size = 0.5, linetype = "solid"),
     panel.spacing = ggplot2::unit(half_line, "pt"),
     panel.spacing.x = NULL,
     panel.spacing.y = NULL,
+    panel.grid = ggplot2::element_line(colour = bc[2]),
+    panel.grid.major = ggplot2::element_line(colour = bc[2]),
+    panel.grid.minor = ggplot2::element_line(colour = bc[2], size = ggplot2::rel(0.5)),
+    panel.grid.major.x = NULL,
+    panel.grid.major.y = NULL,
+    panel.grid.minor.x = NULL,
+    panel.grid.minor.y = NULL,
     panel.ontop = FALSE,
 
-    strip.background = ggplot2::element_rect(fill = base_colours[1], colour = base_colours[3]),
-    strip.text = ggplot2::element_text(
-      colour = base_colours[3],
-      size = ggplot2::rel(0.8),
-      margin = ggplot2::margin(0.8 * half_line, 0.8 * half_line, 0.8 * half_line, 0.8 * half_line)
-    ),
-    strip.text.x = NULL,
-    strip.text.y = ggplot2::element_text(angle = -90),
-    strip.placement = "inside",
-    strip.placement.x = NULL,
-    strip.placement.y = NULL,
-    strip.switch.pad.grid = ggplot2::unit(half_line / 2, "pt"),
-    strip.switch.pad.wrap = ggplot2::unit(half_line / 2, "pt"),
-
-    plot.background = ggplot2::element_rect(colour = base_colours[1]),
+    plot.background = ggplot2::element_rect(colour = bc[1]),
     plot.title = ggplot2::element_text(
       size = ggplot2::rel(1.2),
       face = "bold",
@@ -120,6 +123,7 @@ theme_black <- function(
       vjust = 1,
       margin = ggplot2::margin(b = half_line)
     ),
+    plot.title.position = "panel",
     plot.subtitle = ggplot2::element_text(
       hjust = 0,
       vjust = 1,
@@ -130,9 +134,26 @@ theme_black <- function(
       hjust = 1, vjust = 1,
       margin = ggplot2::margin(t = half_line)
     ),
+    plot.caption.position = "panel",
     plot.tag = ggplot2::element_text(size = ggplot2::rel(1.2), hjust = 0.5, vjust = 0.5),
     plot.tag.position = "topleft",
     plot.margin = ggplot2::margin(half_line, half_line, half_line, half_line),
+
+    strip.background = ggplot2::element_rect(fill = bc[1], colour = bc[3]),
+    strip.background.x = NULL,
+    strip.background.y = NULL,
+    strip.placement = "inside",
+    strip.placement.x = NULL,
+    strip.placement.y = NULL,
+    strip.text = ggplot2::element_text(
+      colour = bc[3],
+      size = ggplot2::rel(0.8),
+      margin = ggplot2::margin(0.8 * half_line, 0.8 * half_line, 0.8 * half_line, 0.8 * half_line)
+    ),
+    strip.text.x = NULL,
+    strip.text.y = ggplot2::element_text(angle = -90),
+    strip.switch.pad.grid = ggplot2::unit(half_line / 2, "pt"),
+    strip.switch.pad.wrap = ggplot2::unit(half_line / 2, "pt"),
 
     complete = TRUE
   )
@@ -163,7 +184,7 @@ dark_mode <- function(.theme) {
   for (geom in geoms) {
     stopifnot(ggplot2::is.ggproto(geom))
     if (!is.null(geom$default_aes$fill)) {
-      geom$default_aes$fill <-pick_colour
+      geom$default_aes$fill <- pick_colour
     }
     if (!is.null(geom$default_aes$colour)) {
       geom$default_aes$colour <- pick_colour
@@ -204,10 +225,10 @@ compute_brightness <- function(colour) {
 #' @method print ggplot
 print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
   if (is.null(x$theme$plot.background$colour)) {
-    base_colour <- ggplot2::theme_get()$plot.background$colour
+    bc <- ggplot2::theme_get()$plot.background$colour
     .theme <- ggplot2::theme_get()
   } else {
-    base_colour <- x$theme$plot.background$colour
+    bc <- x$theme$plot.background$colour
     .theme <- x$theme
   }
   dark_mode(.theme = .theme)
@@ -216,7 +237,7 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
   if (newpage) {
     grid::grid.newpage()
   }
-  grid::grid.rect(gp = grid::gpar(fill = base_colour, col = base_colour))
+  grid::grid.rect(gp = grid::gpar(fill = bc, col = bc))
   grDevices::recordGraphics(
     requireNamespace("ggplot2", quietly = TRUE),
     list(),
@@ -262,10 +283,10 @@ ggsave <- function(
   ...
 ) {
   if (is.null(plot$theme$plot.background$colour)) {
-    base_colour <- ggplot2::theme_get()$plot.background$colour
+    bc <- ggplot2::theme_get()$plot.background$colour
     .theme <- ggplot2::theme_get()
   } else {
-    base_colour <- plot$theme$plot.background$colour
+    bc <- plot$theme$plot.background$colour
     .theme <- plot$theme
   }
   dark_mode(.theme = .theme)
@@ -280,7 +301,7 @@ ggsave <- function(
     units = units,
     dpi = dpi,
     limitsize = limitsize,
-    bg = base_colour,
+    bg = bc,
     ...
   )
 }
