@@ -5,6 +5,10 @@
 \title{.Rprofile configuration as a function}
 \usage{
 mcprofile(
+  given = NULL,
+  family = NULL,
+  email = NULL,
+  orcid = NULL,
   .Renviron = "~/.Renviron",
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
@@ -15,6 +19,14 @@ mcprofile(
 )
 }
 \arguments{
+\item{given}{A character string with the given names.}
+
+\item{family}{A character string with the family name.}
+
+\item{email}{A character string giving an e-mail address.}
+
+\item{orcid}{A chracter string giving an ORCID.}
+
 \item{.Renviron}{Path to the \code{.Renviron} file.}
 
 \item{LANGUAGE}{Environment variable for language.}
