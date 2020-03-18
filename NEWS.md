@@ -4,6 +4,7 @@
 
 * Add new theme components from `ggplot2 v3.3.0`.
 * In `inst/rmarkdown/templates/report/skeleton/sleleton.Rmd`, replace `kableExtra` with `gt`.
+* In `inst/rmarkdown/templates/ioslides/skeleton/sleleton.Rmd`, replace `kableExtra` with `gt`.
 
 
 # mctemplates 0.2.1

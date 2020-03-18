@@ -9,15 +9,14 @@ output: mctemplates::ioslides_presentation
 ```{r setup, include = FALSE}
 options(
   stringsAsFactors = FALSE,
-  width = 80,
-  kableExtra.html.bsTable = TRUE
+  width = 80
 )
 
 ### Load packages and functions
 library(tidyverse)
 library(knitr)
 library(rmarkdown)
-library(kableExtra)
+library(gt)
 
 ### Set knitr rmarkdown chunk options
 opts_chunk$set(
