@@ -159,6 +159,19 @@ theme_black <- function(
   )
 }
 
+
+#' compute_brightness
+#'
+#' @param colour vector of any of the three kinds of R color specifications,
+#'     *i.e.*, either a color name (as listed by colors()),
+#'     a hexadecimal string of the form "#rrggbb" or "#rrggbbaa" (see rgb).
+#'
+#' @keywords internal
+compute_brightness <- function(colour) {
+  ((sum(range(grDevices::col2rgb(colour)))) * 100 * 0.5) / 255
+}
+
+
 #' dark_mode
 #'
 #' @param .theme a theme (a list of theme elements)
@@ -192,17 +205,6 @@ dark_mode <- function(.theme) {
   }
 
   invisible(.theme)
-}
-
-#' compute_brightness
-#'
-#' @param colour vector of any of the three kinds of R color specifications,
-#'     *i.e.*, either a color name (as listed by colors()),
-#'     a hexadecimal string of the form "#rrggbb" or "#rrggbbaa" (see rgb).
-#'
-#' @keywords internal
-compute_brightness <- function(colour) {
-  ((sum(range(grDevices::col2rgb(colour)))) * 100 * 0.5) / 255
 }
 
 
