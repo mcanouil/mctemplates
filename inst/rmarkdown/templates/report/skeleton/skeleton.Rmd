@@ -14,6 +14,14 @@ author:
     affiliation: "Université de Lille, INSERM, CNRS, Institut Pasteur de Lille, UMR 1283/8199 - EGID, F-59000, Lille, France."
     email: "mickael.canouil@cnrs.fr"
 date: '`r format(Sys.time(), "%B %d, %Y")`'
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(
+      inputFile,
+      encoding = encoding, 
+      output_dir = here::here("docs"),
+      intermediates_dir = here::here("data")
+    )
+  })
 output: mctemplates::html_report
 ---
 
@@ -31,7 +39,7 @@ library(knitr)
 
 ### Set knitr rmarkdown chunk options
 output_directory <- file.path(params[["working_directory"]], params[["script_name"]])
-dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0777")
+dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0755")
 opts_chunk$set(
   results = "asis",
   include = TRUE,

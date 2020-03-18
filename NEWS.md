@@ -3,9 +3,14 @@
 ## Minor improvements and fixes
 
 * Add new theme components from `ggplot2 v3.3.0`.
-* In `inst/rmarkdown/templates/report/skeleton/sleleton.Rmd`, replace `kableExtra` with `gt`.
-* In `inst/rmarkdown/templates/ioslides/skeleton/sleleton.Rmd`, replace `kableExtra` with `gt`.
-
+* In `inst/rmarkdown/templates/report/skeleton/sleleton.Rmd`, 
+    - replace `kableExtra` with `gt`.
+    - use knit hook to render in `/docs`.
+* In `inst/rmarkdown/templates/ioslides/skeleton/sleleton.Rmd`, 
+    - replace `kableExtra` with `gt`.
+    - use knit hook to render in `/docs`.
+* In `inst/rmarkdown/templates/powerpoint/skeleton/sleleton.Rmd`, 
+    - use knit hook to render in `/docs`.
 
 # mctemplates 0.2.1
 
