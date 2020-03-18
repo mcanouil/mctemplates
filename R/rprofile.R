@@ -1,5 +1,9 @@
 #' .Rprofile configuration as a function
 #'
+#' @param given A character string with the given names.
+#' @param family A character string with the family name.
+#' @param email A character string giving an e-mail address.
+#' @param orcid A chracter string giving an ORCID.
 #' @param .Renviron Path to the `.Renviron` file.
 #' @param LANGUAGE Environment variable for language.
 #' @param R_LIBS_USER Environment variable for user library.
@@ -11,6 +15,10 @@
 #' @return NULL
 #' @export
 mcprofile <- function(
+  given = NULL,
+  family = NULL,
+  email = NULL,
+  orcid = NULL,
   .Renviron = "~/.Renviron",
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
@@ -114,17 +122,23 @@ mcprofile <- function(
   options(usethis.protocol = "https")
   set_option("usethis.protocol")
 
-  options(usethis.full_name = "Mickaël Canouil")
-  set_option("usethis.full_name")
+  if (is.null(given) | is.null(family)) {
+    options(usethis.full_name = paste(given, family))
+    set_option("usethis.full_name")
+  }
 
-  options(usethis.description = list(
-    `Authors@R` = 'person(given = "Mickaël",
-      family = "Canouil",
-      role = c("aut", "cre"),
-      email = "mickael.canouil@cnrs.fr",
-      comment = c(ORCID = "0000-0002-3396-4549"))',
-    Version = "0.0.0.9000"
-  ))
+  if (is.null(given) | is.null(family)) {
+    options(usethis.description = list(
+      `Authors@R` = glue::glue('person(given = "{given}",
+        family = "{family}",
+        role = c("aut", "cre"),
+        email = "{email}",
+        comment = c(ORCID = "{orcid}"))'),
+      Version = "0.0.0.9000"
+    ))
+  } else {
+    options(usethis.description = list(Version = "0.0.0.9000"))
+  }
   cli::cat_line(
     glue::glue(
       '{crayon::green(clisymbols::symbol$tick)} {crayon::green("usethis.description")}'

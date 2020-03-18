@@ -12,6 +12,7 @@
 * In `/inst/rmarkdown/templates/powerpoint/skeleton/sleleton.Rmd`, 
     - use knit hook to render in `/docs`.
 * In `/R/create_ioslides.R`, use `/docs` and `/R` directories.
+* In `/R/rprofile.R`, remove hard coded values for authors.
 
 # mctemplates 0.2.1
 
