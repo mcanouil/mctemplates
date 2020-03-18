@@ -1,4 +1,4 @@
-# mctemplates (development version)
+# mctemplates 0.2.2
 
 ## Minor improvements and fixes
 
