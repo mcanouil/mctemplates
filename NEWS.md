@@ -1,3 +1,11 @@
+# mctemplates 0.2.3
+
+## Minor improvements and fixes
+
+* In `/R/rprofile.R`, 
+    - fix `usethis` option not set properly.
+    - add version to profile startup messages.
+
 # mctemplates 0.2.2
 
 ## Minor improvements and fixes
