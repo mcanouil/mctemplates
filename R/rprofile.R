@@ -38,7 +38,7 @@ mcprofile <- function(
 
   cli::cat_line(crayon::white(cli::rule(
     left = paste(crayon::bold("Load"), crayon::blue(".Rprofile")),
-    right = crayon::blue("MC")
+    right = crayon::blue(paste0("Version ", packageVersion("mctemplates")))
   )))
 
   if (.Platform$OS.type == "unix" & !is.null(LANGUAGE)) {
@@ -128,6 +128,8 @@ mcprofile <- function(
   }
 
   if (is.null(given) | is.null(family)) {
+    options(usethis.description = list(Version = "0.0.0.9000"))
+  } else {
     options(usethis.description = list(
       `Authors@R` = glue::glue('person(given = "{given}",
         family = "{family}",
@@ -136,8 +138,6 @@ mcprofile <- function(
         comment = c(ORCID = "{orcid}"))'),
       Version = "0.0.0.9000"
     ))
-  } else {
-    options(usethis.description = list(Version = "0.0.0.9000"))
   }
   cli::cat_line(
     glue::glue(
