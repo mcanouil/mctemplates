@@ -18,6 +18,9 @@ create_ioslides <- function(path, git = TRUE) {
     recursive = TRUE, showWarnings = FALSE, mode = "0775"
   )
 
+  usethis::use_directory("R")
+  usethis::use_directory("docs")
+
   rproj <- c(
     "Version: 1.0",
     "",
@@ -84,7 +87,7 @@ create_ioslides <- function(path, git = TRUE) {
       "rmarkdown", "templates", "ioslides", "skeleton", "skeleton.Rmd",
       package = "mctemplates"
     ),
-    to = usethis::proj_path("index.Rmd")
+    to = usethis::proj_path("R", "index.Rmd")
   )
 
   readme <- c(
