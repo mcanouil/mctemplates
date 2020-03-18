@@ -4,7 +4,7 @@ params:
   script_name: "999-default"
   data_directory: NULL
   project_directory: !r here::here()
-  working_directory: !r here::here("Data")
+  working_directory: !r here::here("data")
   show_code: FALSE
   n_cores: !r parallel::detectCores()
   dpi: 120
@@ -19,26 +19,14 @@ output: mctemplates::html_report
 
 ```{r setup, include = FALSE}
 options(stringsAsFactors = FALSE)
-
+options("width" = 110)
 
 ### Load packages and functions
 library(here)
 library(tidyverse)
 library(sessioninfo)
-library(kableExtra)
+library(gt)
 library(knitr)
-
-bootstrap <- function(x) {
-  if (is_html_output()) {
-    kable_styling(
-      kable_input = x,
-      bootstrap_options = c("striped", "hover", "condensed", "responsive", "bordered"),
-      full_width = TRUE
-    )
-  } else {
-    x
-  }
-}
 
 
 ### Set knitr rmarkdown chunk options
@@ -68,6 +56,5 @@ theme_set(theme_light(base_size = params[["gg_fontsize"]]))
 # R session information
 
 ```{r session-info, results = "markup"}
-options("width" = 110)
 session_info()
 ```
