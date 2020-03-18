@@ -38,7 +38,7 @@ mcprofile <- function(
 
   cli::cat_line(crayon::white(cli::rule(
     left = paste(crayon::bold("Load"), crayon::blue(".Rprofile")),
-    right = crayon::blue(paste0("Version ", packageVersion("mctemplates")))
+    right = crayon::blue(paste0("Version ", utils::packageVersion("mctemplates")))
   )))
 
   if (.Platform$OS.type == "unix" & !is.null(LANGUAGE)) {
