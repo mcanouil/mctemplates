@@ -1,3 +1,10 @@
+# mctemplates (development version)
+
+## Minor improvements and fixes
+
+* Add new theme components from `ggplot2 v3.3.0`.
+
+
 # mctemplates 0.2.1
 
 ## New feature
