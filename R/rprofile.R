@@ -109,7 +109,7 @@ mcprofile <- function(
   options(rlang_backtrace_on_error = "branch")
   set_option("rlang_backtrace_on_error")
 
-  if (nchar(system.file(package = "prompt", lib.loc = c(Sys.getenv("R_LIBS"), Sys.getenv("R_LIBS_USER")))) == 0) {
+  if (nchar(system.file(package = "prompt", lib.loc = c(Sys.getenv("R_LIBS"), Sys.getenv("R_LIBS_USER")))) != 0) {
     prompt::set_prompt(prompt::prompt_git)
     cli::cat_line(
       glue::glue(.sep = " ",
