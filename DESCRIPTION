@@ -1,6 +1,6 @@
 Package: mctemplates
 Title: Mickaël Canouil's Rmarkdown & Rstudio templates
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: 
     person(given = "Mickaël",
            family = "Canouil",

@@ -1,3 +1,9 @@
+# mctemplates 0.2.4
+
+## Minor improvements and fixes
+
+* In `/R/rprofile.R`, fix lib.loc for prompt.
+
 # mctemplates 0.2.3
 
 ## Minor improvements and fixes
