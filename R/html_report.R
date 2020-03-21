@@ -24,5 +24,18 @@ html_report <- function(
   code_download = TRUE,
   ...
 ) {
-  bookdown::html_document2(toc = TRUE, toc_float = list(collapse = FALSE), theme = "simplex", ...)
+  bookdown::html_document2(
+    toc = TRUE,
+    toc_float = list(collapse = FALSE),
+    theme = "simplex",
+    toc_depth = toc_depth,
+    fig_width = fig_width,
+    fig_height = fig_height,
+    number_sections = number_sections,
+    self_contained = self_contained,
+    mathjax = mathjax,
+    df_print = df_print,
+    code_download = code_download,
+    ...
+  )
 }

@@ -1,3 +1,9 @@
+# mctemplates 0.2.5
+
+## Minor improvements and fixes
+
+* In `/R/html_report.R`, fix parameters not used internally.
+
 # mctemplates 0.2.4
 
 ## Minor improvements and fixes
