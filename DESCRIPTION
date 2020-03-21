@@ -1,6 +1,6 @@
 Package: mctemplates
 Title: Mickaël Canouil's Rmarkdown & Rstudio templates
-Version: 0.2.5
+Version: 0.2.6
 Authors@R: 
     person(given = "Mickaël",
            family = "Canouil",
@@ -27,6 +27,8 @@ Imports:
     rmarkdown (>= 2.1),
     rlang (>= 0.4.5),
     usethis (>= 1.5.1)
+Remotes:
+    github::gaborcsardi/prompt
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

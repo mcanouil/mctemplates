@@ -1,3 +1,9 @@
+# mctemplates 0.2.6
+
+## Minor improvements and fixes
+
+* In `DESCRIPTION`, add remotes for `prompt`.
+
 # mctemplates 0.2.5
 
 ## Minor improvements and fixes
