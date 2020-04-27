@@ -1,3 +1,9 @@
+# mctemplates 0.2.7
+
+## Minor improvements and fixes
+
+* In `/R/theme_black.R`, fix replacement of `NA` for default colours.
+
 # mctemplates 0.2.6
 
 ## Minor improvements and fixes
