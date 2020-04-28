@@ -196,10 +196,10 @@ dark_mode <- function(.theme) {
   pick_colour <- c("white", "black")[(compute_brightness(.theme$plot.background$colour) > 50) + 1]
   for (geom in geoms) {
     stopifnot(ggplot2::is.ggproto(geom))
-    if (!is.null(geom$default_aes$fill) & !is.na(geom$default_aes$fill)) {
+    if (!is.null(geom$default_aes$fill) && !is.na(geom$default_aes$fill)) {
       geom$default_aes$fill <- pick_colour
     }
-    if (!is.null(geom$default_aes$colour) & !is.na(geom$default_aes$colour)) {
+    if (!is.null(geom$default_aes$colour) && !is.na(geom$default_aes$colour)) {
       geom$default_aes$colour <- pick_colour
     }
   }
