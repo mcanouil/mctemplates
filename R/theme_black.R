@@ -202,6 +202,9 @@ dark_mode <- function(.theme) {
     if (!is.null(geom$default_aes$colour) && !is.na(geom$default_aes$colour)) {
       geom$default_aes$colour <- pick_colour
     }
+    if (inherits(geom, "GeomBoxplot")) {
+      geom$default_aes$fill <- .theme$plot.background$colour
+    }
   }
 
   invisible(.theme)
