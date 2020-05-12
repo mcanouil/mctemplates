@@ -3,9 +3,12 @@
 ## Minor improvements and fixes
 
 * In `R/theme_black.R`,
-    fix boxplot filled in black for light theme, now filled with background colour.
+    - fix boxplot filled in black for light theme, now filled with background colour.
 * In `/inst/rmarkdown/templates/report/skeleton/sleleton.Rmd`, 
+    - restyle setup chunk.
+    - simplify yaml header.
 * In `/inst/rmarkdown/templates/ioslides/skeleton/sleleton.Rmd`, 
+    - use ressources as global yaml parameters.
 
 # mctemplates 0.2.7
 
