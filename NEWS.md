@@ -1,3 +1,14 @@
+# mctemplates 0.2.9
+
+## Minor improvements and fixes
+
+* In `R/theme_black.R`,
+    - fix label filled in black for light theme, now filled with background colour.
+* In `/inst/rmarkdown/templates/report/skeleton/sleleton.Rmd`,  
+    - Update affiliation.
+    - Fix params DPI no longer used.
+    - Minor style change.
+
 # mctemplates 0.2.8
 
 ## Minor improvements and fixes
