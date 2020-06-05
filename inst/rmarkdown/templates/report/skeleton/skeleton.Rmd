@@ -6,12 +6,14 @@ params:
   data_directory: NULL
 author:
   - name: "Mickaël Canouil, *Ph.D.*"
-    affiliation: "Université de Lille, INSERM, CNRS, Institut Pasteur de Lille, UMR 1283/8199 - EGID, F-59000, Lille, France."
+    affiliation: "Université de Lille, INSERM UMR 1283, CNRS UMR 8199, Institut Pasteur de Lille, EGID, F-59000, Lille, France."
     email: "mickael.canouil@cnrs.fr"
 date: '`r format(Sys.time(), "%B %d, %Y")`'
-knit: (function(inputFile, encoding) {
+knit: 
+  (function(inputFile, encoding) {
     rmarkdown::render(
-      inputFile,
+      input = inputFile,
+      output_file = gsub("[0-9]+-(.*)\\.Rmd", "\\1", inputFile),
       encoding = encoding, 
       output_dir = here::here("docs"),
       intermediates_dir = here::here("data")
@@ -51,11 +53,13 @@ opts_chunk$set(
   echo = FALSE,
   warning = FALSE,
   message = FALSE,
-  dpi = params[["dpi"]],
+  dpi = 120,
   tidy = FALSE,
   crop = TRUE,
   autodep = TRUE,
-  fig.align = "center"
+  fig.align = "center",
+  width = getOption("width"),
+  comment = "#>"
 )
 
 
