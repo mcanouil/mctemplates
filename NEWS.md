@@ -1,5 +1,10 @@
 # mctemplates (development version)
 
+## Minor improvements and fixes
+
+* In `R/create_project.R`, 
+    - Add `outputs` directory.
+
 # mctemplates 0.2.9
 
 ## Minor improvements and fixes

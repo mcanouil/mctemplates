@@ -8,7 +8,7 @@ knit: (function(inputFile, encoding) {
       inputFile,
       encoding = encoding, 
       output_dir = here::here("docs"),
-      intermediates_dir = here::here("data")
+      intermediates_dir = here::here("outputs")
     )
   })
 output: mctemplates::powerpoint_presentation

@@ -21,7 +21,9 @@ create_project <- function(path, git = TRUE) {
   usethis::use_directory("R")
   usethis::use_directory("docs")
   usethis::use_directory("data")
+  usethis::use_directory("outputs")
   usethis::use_directory("reports")
+  usethis::use_directory("logs")
 
   rproj <- c(
     "Version: 1.0",
@@ -63,9 +65,8 @@ create_project <- function(path, git = TRUE) {
     "**.aux",
     "**.toc",
     "**.snm",
-    "data",
-    "R/*.html",
-    "R/*.pdf"
+    "outputs",
+    "logs"
   )
   writeLines(gitignore, con = usethis::proj_path(".gitignore"))
 
