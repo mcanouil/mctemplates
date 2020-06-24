@@ -226,7 +226,7 @@ dark_mode <- function(.theme) {
 #' @return Invisibly returns the result of [ggplot_build()], which
 #'   is a list with components that contain the plot itself, the data,
 #'   information about the scales, panels etc.
-#' @export
+#' @keywords internal
 #' @method print ggplot
 print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
   if (is.null(x$theme$plot.background$colour)) {
@@ -267,13 +267,13 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
 
 #' @rdname print.ggplot
 #' @method plot ggplot
-#' @export
+#' @keywords internal
 plot.ggplot <- print.ggplot
 
 #' ggsave
 #'
 #' @inheritParams ggplot2::ggsave
-#' @export
+#' @keywords internal
 ggsave <- function(
   filename,
   plot = ggplot2::last_plot(),
@@ -314,7 +314,7 @@ ggsave <- function(
 #' theme_set
 #'
 #' @inheritParams ggplot2::theme_set
-#' @export
+#' @keywords internal
 theme_set <- function(new) {
   ggplot2::theme_set(dark_mode(.theme = new))
 }

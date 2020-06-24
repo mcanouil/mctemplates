@@ -55,3 +55,4 @@ as specified by \code{device}.}
 \description{
 ggsave
 }
+\keyword{internal}

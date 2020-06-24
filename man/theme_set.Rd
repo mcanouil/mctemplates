@@ -12,3 +12,4 @@ theme_set(new)
 \description{
 theme_set
 }
+\keyword{internal}
