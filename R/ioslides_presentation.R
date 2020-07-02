@@ -57,7 +57,8 @@ ioslides_presentation <- function(
   if (is.null(css)) {
     css <- c(
       system.file("rmarkdown/templates/ioslides/resources", "mc_theme.css", package = "mctemplates"),
-      system.file("rmarkdown/templates/ioslides/resources", "all.min.5.11.2.css", package = "mctemplates")
+      # system.file("rmarkdown/templates/ioslides/resources", "all.min.5.11.2.css", package = "mctemplates"),
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     )
   }
   for (css_file in css) args <- c(args, "--css", rmarkdown::pandoc_path_arg(css_file))
