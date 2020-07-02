@@ -246,7 +246,7 @@ theme_black_md <- function(
 #' @export
 #' @method print ggplot
 print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
-  bg_fill <- ggplot2::calc_element("plot.background", ggplot2:::plot_theme(plot))$fill
+  bg_fill <- ggplot2::calc_element("plot.background", ggplot2:::plot_theme(x))$fill
 
   ggplot2::set_last_plot(x)
   if (newpage) {
