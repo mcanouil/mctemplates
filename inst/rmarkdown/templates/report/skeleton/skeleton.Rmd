@@ -9,7 +9,7 @@ author:
     affiliation: "Université de Lille, INSERM UMR 1283, CNRS UMR 8199, Institut Pasteur de Lille, EGID, F-59000, Lille, France."
     email: "mickael.canouil@cnrs.fr"
 date: '`r format(Sys.time(), "%B %d, %Y")`'
-knit: 
+knit:
   (function(inputFile, encoding) {
     rmarkdown::render(
       input = inputFile,
@@ -31,9 +31,9 @@ options("width" = 110)
 # library(here)
 
 suppressPackageStartupMessages({
+  library(knitr)
   library(sessioninfo)
   library(gt)
-  library(knitr)
   library(ggplot2)
 })
 

@@ -30,4 +30,3 @@ to call \code{print()} explicitly if you want to draw a plot inside a
 function or for loop.
 }
 \keyword{hplot}
-\keyword{internal}

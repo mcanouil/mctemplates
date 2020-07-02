@@ -1,5 +1,18 @@
 # mctemplates (development version)
 
+## New feature
+
+* In `DESCRIPTION`,
+    - Use `ggtext`.
+    - Update dependencies.
+* In `R/theme_black.R`,
+    - New `theme_black_md()` using `ggtext`.
+
+## Minor improvements and fixes
+
+* Use `ggplot2` internal function to compute background colour in device.
+* Fix ioslide template
+
 # mctemplates 0.3.0
 
 ## Minor improvements and fixes

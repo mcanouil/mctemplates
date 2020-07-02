@@ -12,3 +12,4 @@ dark_mode(.theme)
 \description{
 dark_mode
 }
+\keyword{internal}

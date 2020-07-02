@@ -2,9 +2,17 @@
 % Please edit documentation in R/theme_black.R
 \name{theme_black}
 \alias{theme_black}
+\alias{theme_black_md}
 \title{theme_black}
 \usage{
 theme_black(
+  base_size = 11,
+  base_family = "",
+  base_line_size = base_size/22,
+  base_rect_size = base_size/22
+)
+
+theme_black_md(
   base_size = 11,
   base_family = "",
   base_line_size = base_size/22,
