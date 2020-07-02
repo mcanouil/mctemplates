@@ -73,9 +73,9 @@ ioslides_presentation <- function(
   if (is.null(csl)) {
     csl <- system.file("rmarkdown/templates/ioslides/resources", "csl", "apa.csl", package = "mctemplates")
     if (!is.null(pandoc_args) && grepl("--csl", pandoc_args)) {
-      pandoc_args[grepl("--csl", pandoc_args)] <- paste0("--csl=", rmarkdown:::normalized_relative_to(dir = , file = csl))
+      pandoc_args[grepl("--csl", pandoc_args)] <- paste0("--csl=", csl)
     } else {
-      pandoc_args <- c(pandoc_args, paste0("--csl=", rmarkdown:::normalized_relative_to(dir = , file = csl)))
+      pandoc_args <- c(pandoc_args, paste0("--csl=", csl))
     }
   }
   pre_processor <- function(metadata, input_file, runtime, knit_meta, files_dir, output_dir) {
