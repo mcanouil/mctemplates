@@ -1,4 +1,4 @@
-# mctemplates (development version)
+# mctemplates 0.4.0
 
 ## New feature
 
@@ -7,6 +7,8 @@
     - Update dependencies.
 * In `R/theme_black.R`,
     - New `theme_black_md()` using `ggtext`.
+* In `/inst/rmarkdown/templates`,
+    - Update all templates setup chunk and YAML header.
 
 ## Minor improvements and fixes
 
