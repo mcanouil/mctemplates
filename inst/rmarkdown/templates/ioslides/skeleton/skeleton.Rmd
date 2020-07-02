@@ -6,8 +6,8 @@ date: '`r format(Sys.time(), "%B %d, %Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs"), intermediates_dir = here::here("outputs", gsub("\\.[^.]+$", ", basename(inputFile)))))
 output: mctemplates::ioslides_presentation
 params:
-  project_directory: here::here()
-  output_directory: here::here("outputs", "ioslides")
+  project_directory: !r here::here()
+  output_directory: !r here::here("outputs", "ioslides")
 ---
 
 ```{r setup, include = FALSE}

@@ -1,9 +1,4 @@
 ---
-params:
-  author: "your name"
-  xlsx: "data/cv.xlsx"
-  bib: "data/cv.bib"
-  picture: "data/cv.png"
 title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
@@ -12,8 +7,11 @@ output:
     mathjax: null
     includes:
       in_header: "utils/_ga_script.html"
-editor_options: 
-  chunk_output_type: console
+params:
+  author: "your name"
+  xlsx: "data/cv.xlsx"
+  bib: "data/cv.bib"
+  picture: "data/cv.png"
 ---
 
 ```{r setup, include = FALSE}

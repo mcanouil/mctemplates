@@ -1,9 +1,5 @@
 ---
 title: "Untitled"
-params:
-  project_directory: !r here::here()
-  output_directory: !r here::here("outputs", "999-default")
-  data_directory: NULL
 author:
   - name: "Mickaël Canouil, *Ph.D.*"
     affiliation: "Université de Lille, INSERM UMR 1283, CNRS UMR 8199, Institut Pasteur de Lille, EGID, F-59000, Lille, France."
@@ -11,6 +7,10 @@ author:
 date: '`r format(Sys.time(), "%B %d, %Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs"), intermediates_dir = here::here("outputs", gsub("\\.[^.]+$", ", basename(inputFile)))))
 output: mctemplates::html_report
+params:
+  project_directory: !r here::here()
+  output_directory: !r here::here("outputs", "999-default")
+  data_directory: NULL
 ---
 
 ```{r setup, include = FALSE}
