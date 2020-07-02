@@ -1,8 +1,8 @@
 ---
 title: "Untitled"
 params:
-  script_name: "999-default"
   project_directory: !r here::here()
+  output_directory: !r here::here("outputs", "999-default")
   data_directory: NULL
 author:
   - name: "Mickaël Canouil, *Ph.D.*"
@@ -35,7 +35,7 @@ suppressPackageStartupMessages({
 ### Environment ====================================================================================
 project_name <- gsub("(.*)_.*", "\\1", basename(params[["project_directory"]]))
 
-output_directory <- file.path(params[["working_directory"]], "outputs", params[["script_name"]])
+output_directory <- params[["output_directory"]]
 dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
 
 opts_chunk$set(
@@ -55,6 +55,12 @@ opts_chunk$set(
 
 
 ### Define theme ===================================================================================
+options(
+  ggplot2.discrete.colour = scale_colour_viridis_d,
+  ggplot2.discrete.fill = scale_fill_viridis_d,
+  ggplot2.continuous.colour = scale_colour_viridis_c,
+  ggplot2.continuous.fill = scale_fill_viridis_c
+)
 theme_set(theme_light())
 ```
 
