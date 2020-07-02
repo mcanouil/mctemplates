@@ -19,17 +19,23 @@ Imports:
     utils,
     bookdown (>= 0.20),
     cli (>= 2.0.2),
-    clisymbols (>= 1.2.0),
     crayon (>= 1.3.4),
     ggplot2 (>= 3.3.2),
     ggtext (>= 0.1.0),
-    git2r (>= 0.27.1),
     glue (>= 1.4.1),
-    here (>= 0.1),
-    prompt (>= 1.0.0),
     rlang (>= 0.4.6),
     rmarkdown (>= 2.3),
     usethis (>= 1.6.1)
+Suggests: 
+    devtools (>= 2.3.0),
+    git2r (>= 0.27.1),
+    gt (>= 0.2.1),
+    here (>= 0.1),
+    knitr (>= 1.29),
+    prompt (>= 1.0.0),
+    reprex (>= 0.3.0),
+    sessioninfo (>= 1.1.1),
+    testthat (>= 2.3.2)
 Remotes:
     github::gaborcsardi/prompt
 Encoding: UTF-8

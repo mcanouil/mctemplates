@@ -8,6 +8,6 @@
 #' @return R Markdown output format to pass to render
 #' @export
 powerpoint_presentation <- function(fig_width = 5.94, fig_height =  3.30, ...) {
-  template <- system.file("rmarkdown", "templates", "powerpoint", "resources", "template.pptx", package = "mctemplates")
+  template <- system.file("rmarkdown/templates/powerpoint/resources", "template.pptx", package = "mctemplates")
   rmarkdown::powerpoint_presentation(reference_doc = template, ...)
 }

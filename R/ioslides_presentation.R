@@ -3,13 +3,11 @@
 #' Format for converting from R Markdown to an [ioslides](https://code.google.com/p/io-2012-slides/) presentation.
 #'
 #' @inheritParams rmarkdown::ioslides_presentation
+#' @param csl bibliography style as a csl file.
 #' @param ... Arguments to be passed to a specific output format function `rmarkdown::ioslides_presentation`
 #'
 #' @return R Markdown output format to pass to render
 #' @export
-#'
-#' @importFrom here here
-#'
 ioslides_presentation <- function(
   logo = NULL,
   slide_level = 2,
@@ -58,14 +56,14 @@ ioslides_presentation <- function(
   args <- c(args, rmarkdown::pandoc_variable_arg("transition", transition))
   if (is.null(css)) {
     css <- c(
-      system.file("rmarkdown", "templates", "ioslides", "resources", "mc_theme.css", package = "mctemplates"),
-      system.file("rmarkdown", "templates", "ioslides", "resources", "all.min.5.11.2.css", package = "mctemplates")
+      system.file("rmarkdown/templates/ioslides/resources", "mc_theme.css", package = "mctemplates"),
+      system.file("rmarkdown/templates/ioslides/resources", "all.min.5.11.2.css", package = "mctemplates")
     )
   }
-  for (css_file in css) args <- c(args, "--css", pandoc_path_arg(css_file))
-  args <- c(args, includes_to_pandoc_args(includes))
+  for (css_file in css) args <- c(args, "--css", rmarkdown::pandoc_path_arg(css_file))
+  args <- c(args, rmarkdown::includes_to_pandoc_args(includes))
   if (is.null(template) || !file.exists(template)) {
-    template <- pkg_file("rmd/ioslides/default.html")
+    template <- rmarkdown:::pkg_file("rmd/ioslides/default.html")
   }
   args <- c(args, "--template", rmarkdown::pandoc_path_arg(template))
   extra_dependencies <- append(extra_dependencies, list(rmarkdown:::html_dependency_ioslides()))
@@ -73,7 +71,7 @@ ioslides_presentation <- function(
     args <- c(args, rmarkdown::pandoc_variable_arg("analytics", analytics))
   }
   if (is.null(csl)) {
-    csl <- system.file("rmarkdown", "templates", "ioslides", "resources", "csl", "apa.csl", package = "mctemplates")
+    csl <- system.file("rmarkdown/templates/ioslides/resources", "csl", "apa.csl", package = "mctemplates")
     if (grepl("--csl", pandoc_args)) {
       pandoc_args[grepl("--csl", pandoc_args)] <- paste0("--csl=", rmarkdown:::normalized_relative_to(dir = , file = csl))
     } else {
@@ -85,11 +83,11 @@ ioslides_presentation <- function(
       lib_dir <- files_dir
     }
     args <- c()
-    if (!dir_exists(files_dir)) {
+    if (!rmarkdown:::dir_exists(files_dir)) {
       dir.create(files_dir)
     }
     if (is.null(logo)) {
-      logo <- system.file("rmarkdown", "templates", "ioslides", "resources", "logo_UMR.png", package = "mctemplates")
+      logo <- system.file("rmarkdown/templates/ioslides/resources", "logo_UMR.png", package = "mctemplates")
     }
     if (!is.null(logo)) {
       logo_path <- logo
@@ -128,12 +126,12 @@ ioslides_presentation <- function(
     add_setting("smart", smart)
     add_setting("mathjax", !is.null(mathjax))
     settings <- c(settings, sprintf("local slide_level = %s", slide_level))
-    write_utf8(settings, lua_writer)
+    rmarkdown:::write_utf8(settings, lua_writer)
     args <- c(args, "--slide-level", as.character(slide_level))
-    file.append(lua_writer, pkg_file("rmd/ioslides/ioslides_presentation.lua"))
+    file.append(lua_writer, rmarkdown:::pkg_file("rmd/ioslides/ioslides_presentation.lua"))
     output_tmpfile <- tempfile("ioslides-output", fileext = ".html")
     on.exit(unlink(output_tmpfile), add = TRUE)
-    if (is_windows()) {
+    if (rmarkdown:::is_windows()) {
       codepage <- as.numeric(gsub("\\D", "", system2("chcp", stdout = TRUE)))
       if (!is.na(codepage)) {
         on.exit(system2("chcp", args = codepage, stdout = TRUE), add = TRUE)
@@ -165,7 +163,7 @@ ioslides_presentation <- function(
     }
     output_file
   }
-  output_format(
+  rmarkdown::output_format(
     knitr = rmarkdown::knitr_options_html(fig_width, fig_height, fig_retina, keep_md, dev),
     pandoc = rmarkdown::pandoc_options(to = "html", from = rmarkdown::from_rmarkdown(fig_caption, md_extensions), args = args),
     keep_md = keep_md,

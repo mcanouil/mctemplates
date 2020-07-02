@@ -124,6 +124,8 @@ additional details.}
 \item{extra_dependencies}{Additional function arguments to pass to the
 base R Markdown HTML output formatter \code{\link[rmarkdown]{html_document_base}}}
 
+\item{csl}{bibliography style as a csl file.}
+
 \item{...}{Arguments to be passed to a specific output format function \code{rmarkdown::ioslides_presentation}}
 }
 \value{
