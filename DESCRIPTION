@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mickael.canouil@cnrs.fr",
            comment = c(ORCID = "0000-0002-3396-4549"))
-Description: Some templates to work with Rmarkdown or Rstudio.
+Description: Some templates to work with Rmarkdown and Rstudio.
 License: GPL-3
 URL: https://github.com/mcanouil/mctemplates
 BugReports: https://github.com/mcanouil/mctemplates/issues
@@ -25,6 +25,7 @@ Imports:
     ggtext (>= 0.1.0),
     git2r (>= 0.27.1),
     glue (>= 1.4.1),
+    here (>= 0.1),
     prompt (>= 1.0.0),
     rlang (>= 0.4.6),
     rmarkdown (>= 2.3),
