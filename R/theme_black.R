@@ -172,18 +172,18 @@ theme_black_md <- function(
   bc <- c("grey20", "grey50", "white")
   theme_black(base_size, base_family, base_line_size, base_rect_size) +
     ggplot2::theme(
-      text = ggtext::element_markdown(
-        family = base_family,
-        face = "plain",
-        colour = bc[3],
-        size = base_size,
-        lineheight = 0.9,
-        hjust = 0.5,
-        vjust = 0.5,
-        angle = 0,
-        margin = ggplot2::margin(),
-        debug = FALSE
-      ),
+      # text = ggtext::element_markdown(
+      #   family = base_family,
+      #   face = "plain",
+      #   colour = bc[3],
+      #   size = base_size,
+      #   lineheight = 0.9,
+      #   hjust = 0.5,
+      #   vjust = 0.5,
+      #   angle = 0,
+      #   margin = ggplot2::margin(),
+      #   debug = FALSE
+      # ),
       axis.title.x = ggtext::element_markdown(margin = ggplot2::margin(t = half_line), vjust = 1),
       axis.title.x.top = ggtext::element_markdown(margin = ggplot2::margin(b = half_line), vjust = 0),
       axis.title.y = ggtext::element_markdown(angle = 90, margin = ggplot2::margin(r = half_line), vjust = 1),
@@ -221,9 +221,7 @@ theme_black_md <- function(
         size = ggplot2::rel(0.8),
         margin = ggplot2::margin(0.8 * half_line, 0.8 * half_line, 0.8 * half_line, 0.8 * half_line)
       ),
-      strip.text.y = ggtext::element_markdown(angle = -90),
-
-      complete = TRUE
+      strip.text.y = ggtext::element_markdown(angle = -90)
     )
 }
 
