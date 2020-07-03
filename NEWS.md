@@ -1,3 +1,10 @@
+# mctemplates 0.4.1
+
+## Minor improvements and fixes
+
+* In `R/theme_black.R`,
+    - Fix `theme_black_md()`.
+
 # mctemplates 0.4.0
 
 ## New feature
