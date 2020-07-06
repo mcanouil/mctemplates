@@ -1,3 +1,8 @@
+# mctemplates 0.4.2
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Reorder code in setup chunk.
+
 # mctemplates 0.4.1
 
 ## Minor improvements and fixes
