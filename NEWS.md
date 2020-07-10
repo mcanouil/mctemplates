@@ -1,3 +1,8 @@
+# mctemplates 0.4.3
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Remove css style for tables.
+
 # mctemplates 0.4.2
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
