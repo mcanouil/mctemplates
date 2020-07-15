@@ -20,6 +20,17 @@ output_directory <- params[["output_directory"]]
 dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
 
 
+### Load packages ==================================================================================
+library(here)
+
+suppressPackageStartupMessages({
+  library(knitr)
+  library(gt)
+  library(ggplot2)
+  library(mctemplates)
+})
+
+
 ### knitr settings =================================================================================
 opts_chunk$set(
   eval = TRUE,
@@ -37,17 +48,6 @@ opts_chunk$set(
   comment = "#>",
   fig.path = file.path(output_directory, "images/")
 )
-
-
-### Load packages ==================================================================================
-library(here)
-
-suppressPackageStartupMessages({
-  library(knitr)
-  library(gt)
-  library(ggplot2)
-  library(mctemplates)
-})
 
 
 ### Define theme ===================================================================================

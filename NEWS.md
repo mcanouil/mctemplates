@@ -1,3 +1,9 @@
+# mctemplates 0.4.4
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Minor code change.
+    + Move knitr settings after libary loading section.
+
 # mctemplates 0.4.3
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
