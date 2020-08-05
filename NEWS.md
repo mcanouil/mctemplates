@@ -1,3 +1,8 @@
+# mctemplates 0.4.5
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Update affiliation..
+
 # mctemplates 0.4.4
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
