@@ -57,7 +57,8 @@ ioslides_presentation <- function(
   if (is.null(css)) {
     css <- list.files(
       path = system.file("rmarkdown/templates/ioslides/resources/css", package = "mctemplates"),
-      pattern = "*.css$"
+      pattern = "*.css$",
+      full.names = TRUE
     )
   }
   for (css_file in css) args <- c(args, "--css", rmarkdown::pandoc_path_arg(css_file))
