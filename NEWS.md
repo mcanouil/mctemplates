@@ -1,4 +1,4 @@
-# mctemplates (development version)
+# mctemplates 0.4.6
 
 * In [rmarkdown templates](inst/rmarkdown/templates/ioslides/resources),
     + Add Font-Awesome 5.14.0 icons to ioslides.
