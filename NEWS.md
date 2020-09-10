@@ -1,9 +1,14 @@
 # mctemplates (development version)
 
+* In [rmarkdown templates](inst/rmarkdown/templates/ioslides/resources),
+    + Add Font-Awesome 5.14.0 icons to ioslides.
+* In `ioslides_presentation.R`,
+    + Update to include Font-Awesome 5.14.0 icons.
+
 # mctemplates 0.4.5
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
-    + Update affiliation..
+    + Update affiliation.
 
 # mctemplates 0.4.4
 
@@ -37,7 +42,7 @@
     - Update dependencies.
 * In `R/theme_black.R`,
     - New `theme_black_md()` using `ggtext`.
-* In `/inst/rmarkdown/templates`,
+* In [rmarkdown templates](inst/rmarkdown/templates),
     - Update all templates setup chunk and YAML header.
 
 ## Minor improvements and fixes
