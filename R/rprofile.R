@@ -131,11 +131,7 @@ mcprofile <- function(
     options(usethis.description = list(Version = "0.0.0.9000"))
   } else {
     options(usethis.description = list(
-      `Authors@R` = glue::glue('person(given = "{given}",
-        family = "{family}",
-        role = c("aut", "cre"),
-        email = "{email}",
-        comment = c(ORCID = "{orcid}"))'),
+      `Authors@R` = glue::glue('person(given = "{given}", family = "{family}", role = c("aut", "cre"), email = "{email}", comment = c(ORCID = "{orcid}"))'),
       Version = "0.0.0.9000"
     ))
   }

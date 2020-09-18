@@ -1,8 +1,13 @@
+# mctemplates 0.4.7
+
+* In `R/rprofile.R`,
+    + Fix `Authors@R` filed for `usethis`.
+
 # mctemplates 0.4.6
 
 * In [rmarkdown templates](inst/rmarkdown/templates/ioslides/resources),
     + Add Font-Awesome 5.14.0 icons to ioslides.
-* In `ioslides_presentation.R`,
+* In `R/ioslides_presentation.R`,
     + Update to include Font-Awesome 5.14.0 icons.
 
 # mctemplates 0.4.5
