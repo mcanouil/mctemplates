@@ -1,6 +1,6 @@
 Package: mctemplates
 Title: Mickaël Canouil's Rmarkdown & Rstudio templates
-Version: 0.4.7
+Version: 0.5.0
 Authors@R: 
     person(given = "Mickaël",
            family = "Canouil",
@@ -8,7 +8,7 @@ Authors@R:
            email = "mickael.canouil@cnrs.fr",
            comment = c(ORCID = "0000-0002-3396-4549"))
 Description: Some templates to work with Rmarkdown and Rstudio.
-License: GPL-3
+License: MIT + file LICENSE
 URL: https://github.com/mcanouil/mctemplates
 BugReports: https://github.com/mcanouil/mctemplates/issues
 Depends: 

@@ -1,3 +1,7 @@
+# mctemplates 0.5.0
+
+* MIT License
+
 # mctemplates 0.4.7
 
 * In `R/rprofile.R`,
