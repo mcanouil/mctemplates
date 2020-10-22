@@ -1,6 +1,8 @@
 # mctemplates 0.5.0
 
 * MIT License
+* In `R/rprofile.R`,
+    + Set default rule width to `80`.
 
 # mctemplates 0.4.7
 
