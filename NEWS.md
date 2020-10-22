@@ -7,6 +7,8 @@
     - Update dependencies.
 * In `R/ioslides_presentation.R`,
     + Update not exported function from `rmarkdown`.
+* In [rmarkdown templates](inst/rmarkdown/templates/ioslides/resources),
+    + Update affiliation.
 
 # mctemplates 0.4.7
 
