@@ -3,6 +3,10 @@
 * MIT License
 * In `R/rprofile.R`,
     + Set default rule width to `80`.
+* In `DESCRIPTION`,
+    - Update dependencies.
+* In `R/ioslides_presentation.R`,
+    + Update not exported function from `rmarkdown`.
 
 # mctemplates 0.4.7
 
