@@ -1,3 +1,8 @@
+# mctemplates 0.5.1
+
+* In `R/rprofile.R`,
+    + Fix `usethis.full_name`.
+
 # mctemplates 0.5.0
 
 * MIT License

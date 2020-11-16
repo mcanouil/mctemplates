@@ -123,7 +123,7 @@ mcprofile <- function(
   options(usethis.protocol = "https")
   set_option("usethis.protocol")
 
-  if (is.null(given) | is.null(family)) {
+  if (!is.null(given) & !is.null(family)) {
     options(usethis.full_name = paste(given, family))
     set_option("usethis.full_name")
   }
