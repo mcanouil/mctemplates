@@ -88,7 +88,7 @@ pre {
   padding: 10px 10px 10px 60px;
   letter-spacing: -1px;
   /*margin-bottom: 5px;*/
-  width: 100%;
+  width: 150%;
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -100,7 +100,7 @@ pre {
   background-color: #e6e6e6;
   position: relative;
   width: 100%;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 code {
@@ -244,10 +244,6 @@ article.smaller pre {
 
 slides > slide > hgroup + article {
   margin-top: 20px;
-}
-
-slides > slide > hgroup + article p {
-  margin-top: 0.5em;
 }
 
 /* Pretty print */

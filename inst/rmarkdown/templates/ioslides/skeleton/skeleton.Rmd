@@ -46,8 +46,7 @@ opts_chunk$set(
   results = "asis",
   fig.align = "center",
   width = getOption("width"),
-  comment = "#>",
-  # fig.path = file.path(output_directory, "images/")
+  comment = "#>"
 )
 
 
