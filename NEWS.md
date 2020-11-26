@@ -1,3 +1,13 @@
+# mctemplates 0.5.2
+
+* In `R/ioslides_presentation.R`,
+    + Update with new logo.
+    + Tweak css style.
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Update with new logo.
+    + Tweak css style.
+
 # mctemplates 0.5.1
 
 * In `R/rprofile.R`,
