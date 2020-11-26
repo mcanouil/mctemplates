@@ -16,10 +16,10 @@ params:
 ---
 
 ```{r setup, include = FALSE}
-options("stringsAsFactors" = FALSE, "width" = 110)
-
-
+# Docker Container R
 ### Environment ====================================================================================
+options("width" = 110)
+
 project_name <- gsub("(.*)_.*", "\\1", basename(params[["project_directory"]]))
 output_directory <- params[["output_directory"]]
 dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
@@ -30,9 +30,11 @@ library(here)
 
 suppressPackageStartupMessages({
   library(knitr)
-  library(sessioninfo)
-  library(gt)
+  library(ragg)
   library(ggplot2)
+  library(ggtext)
+  library(patchwork)
+  library(data.table)
 })
 
 
@@ -51,18 +53,32 @@ opts_chunk$set(
   fig.align = "center",
   width = getOption("width"),
   comment = "#>",
-  fig.path = file.path(output_directory, "images/")
+  # fig.path = file.path(output_directory, "images/"), 
+  dev = "ragg_png"
 )
 
 
 ### Define theme ===================================================================================
 options(
-  ggplot2.discrete.colour = scale_colour_viridis_d,
-  ggplot2.discrete.fill = scale_fill_viridis_d,
-  ggplot2.continuous.colour = scale_colour_viridis_c,
-  ggplot2.continuous.fill = scale_fill_viridis_c
+  ggplot2.discrete.colour = function(...) scale_colour_viridis_d(..., begin = 0.15, end = 0.85),
+  ggplot2.discrete.fill = function(...) scale_fill_viridis_d(..., begin = 0.15, end = 0.85),
+  ggplot2.continuous.colour = function(...) scale_colour_viridis_c(..., begin = 0.15, end = 0.85),
+  ggplot2.continuous.fill = function(...) scale_fill_viridis_c(..., begin = 0.15, end = 0.85)
 )
-theme_set(theme_light())
+theme_set(
+  theme_minimal(base_family = "Latin Modern Sans") +
+    theme(
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      plot.title = element_markdown(),
+      plot.subtitle = element_markdown(face = "italic", size = rel(0.8)),
+      plot.caption = element_markdown(face = "italic", size = rel(0.5)),
+      axis.title.x = element_markdown(),
+      axis.text.x = element_markdown(),
+      axis.title.y = element_markdown(),
+      axis.text.y = element_markdown()
+    )
+)
 
 
 ### Source functions ===============================================================================
