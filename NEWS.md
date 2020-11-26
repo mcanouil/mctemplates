@@ -2,11 +2,12 @@
 
 * In `R/ioslides_presentation.R`,
     + Update with new logo.
-    + Tweak css style.
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
     + Update with new logo.
-    + Tweak css style.
+    + Tweak css style:
+        - Decrease font size for code.
+        - Extend background code ribbons to full screen.
 
 # mctemplates 0.5.1
 
