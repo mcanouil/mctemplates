@@ -36,14 +36,14 @@ suppressPackageStartupMessages({
 opts_chunk$set(
   eval = TRUE,
   include = TRUE,
-  echo = FALSE,
+  echo = TRUE,
   warning = FALSE,
   message = FALSE,
-  dpi = 120,
+  # dpi = 120,
   tidy = FALSE,
   crop = TRUE,
   autodep = TRUE,
-  results = "asis",
+  # results = "asis",
   fig.align = "center",
   width = getOption("width"),
   comment = "#>"
