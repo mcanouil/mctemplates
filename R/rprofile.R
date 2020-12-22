@@ -9,8 +9,6 @@
 #' @param R_LIBS_USER Environment variable for user library.
 #' @param R_MAX_NUM_DLLS Environment variable for the maximum number of DLLs to be loaded.
 #' @param TZ Environment variable for time zone.
-#' @param GITHUB_PAT Environment variable for GitHub access token.
-#' @param GITLAB_PAT Environment variable for GitLab access token.
 #'
 #' @return NULL
 #' @export
@@ -23,9 +21,7 @@ mcprofile <- function(
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
   R_MAX_NUM_DLLS = NULL,
-  TZ = NULL,
-  GITHUB_PAT = NULL,
-  GITLAB_PAT = NULL
+  TZ = NULL
 ) {
   set_option <- function(x) {
     cli::cat_line(
@@ -71,15 +67,12 @@ mcprofile <- function(
   env_var <- c(
     if (!is.null(LANGUAGE)) glue::glue("LANGUAGE='{LANGUAGE}'"),
     if (!is.null(R_MAX_NUM_DLLS)) glue::glue("R_MAX_NUM_DLLS={R_MAX_NUM_DLLS}"),
-    if (!is.null(GITHUB_PAT)) glue::glue("GITHUB_PAT={GITHUB_PAT}"),
-    if (!is.null(GITLAB_PAT)) glue::glue("GITLAB_PAT={GITLAB_PAT}"),
     if (!is.null(TZ)) glue::glue("TZ='{TZ}'"),
     if (!is.null(R_LIBS_USER)) glue::glue("R_LIBS_USER={R_LIBS_USER}")
   )
   cat(env_var, sep = "\n", file = .Renviron)
   readRenviron(path = .Renviron)
   for (ienv in readLines(.Renviron)) {
-    if (grepl("^GIT", ienv)) ienv <- gsub("(.*=).*", "\\1=XXXXXXXX", ienv)
     cli::cat_line(
       glue::glue(.sep = " ",
         "{crayon::blue(clisymbols::symbol$info)}",
@@ -153,7 +146,7 @@ mcprofile <- function(
 
   cli::cat_line(glue::glue('{crayon::red(clisymbols::symbol$bullet)} Load packages'))
   invisible(lapply(
-    X = c("devtools", "usethis", "testthat", "reprex", "git2r"),
+    X = c("devtools", "usethis", "testthat", "reprex", "gert"),
     FUN = function(x) {
       if (require(x, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)) {
         cli::cat_line(

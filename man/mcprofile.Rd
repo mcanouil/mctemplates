@@ -13,9 +13,7 @@ mcprofile(
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
   R_MAX_NUM_DLLS = NULL,
-  TZ = NULL,
-  GITHUB_PAT = NULL,
-  GITLAB_PAT = NULL
+  TZ = NULL
 )
 }
 \arguments{
@@ -36,10 +34,6 @@ mcprofile(
 \item{R_MAX_NUM_DLLS}{Environment variable for the maximum number of DLLs to be loaded.}
 
 \item{TZ}{Environment variable for time zone.}
-
-\item{GITHUB_PAT}{Environment variable for GitHub access token.}
-
-\item{GITLAB_PAT}{Environment variable for GitLab access token.}
 }
 \description{
 .Rprofile configuration as a function
