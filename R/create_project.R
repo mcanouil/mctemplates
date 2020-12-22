@@ -41,6 +41,7 @@ create_project <- function(path, git = TRUE) {
     "LaTeX: pdfLaTeX",
     "",
     "AutoAppendNewline: Yes",
+    "LineEndingConversion: Posix",
     "",
     "QuitChildProcessesOnExit: Yes"
   )
@@ -72,9 +73,8 @@ create_project <- function(path, git = TRUE) {
 
   usethis::use_readme_md(open = FALSE)
   if (git) {
-    git2r::init(usethis::proj_get())
-    git2r::add(usethis::proj_get(), "*")
-    git2r::commit(repo = usethis::proj_get(), message = "Init project", all = TRUE)
+    gert::git_init(path = usethis::proj_get())
+    gert::git_commit_all(repo = usethis::proj_get(), message = "Init project")
   }
 
   invisible(usethis::proj_get())
