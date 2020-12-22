@@ -2,6 +2,7 @@
 
 S3method(plot,ggplot)
 S3method(print,ggplot)
+export(check_commit)
 export(create_ioslides)
 export(create_project)
 export(ggsave)

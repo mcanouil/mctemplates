@@ -169,8 +169,8 @@ mcprofile <- function(
   invisible()
 }
 
-#' @rdname rprofile
-#' @export
+#' @noRd
+#' @keywords internal
 prompt_git <- function(...) {
   not_git <- inherits(try(gert::git_find(), silent = TRUE), "try-error")
   if (not_git) return("> ")
@@ -185,14 +185,6 @@ prompt_git <- function(...) {
     " > "
   )
 }
-
-#' Dynamic R Prompt
-#'
-#' Set the R prompt dynamically, from a function.
-#'
-#' @docType package
-#' @name prompt
-NULL
 
 prompt_env <- new.env()
 prompt_env$prompt <- "> "
@@ -240,7 +232,8 @@ update_prompt <- function(...) {
 #' with \code{suspend()} and then re-enable with \code{restore()}.
 #' Function \code{toggle()} toggles between the two.
 #'
-#' @export
+#' @noRd
+#' @keywords internal
 set_prompt <- function(value) {
   stopifnot(is.function(value) || is.string(value))
   assign("prompt", value, envir = prompt_env)
@@ -248,8 +241,8 @@ set_prompt <- function(value) {
 }
 
 
-#' @rdname set_prompt
-#' @export
+#' @noRd
+#' @keywords internal
 suspend <- function() {
   if (!prompt_env$in_use) return(invisible(FALSE))
   prompt_env$disabled_prompt <- prompt_env$prompt
@@ -258,8 +251,8 @@ suspend <- function() {
   invisible(TRUE)
 }
 
-#' @rdname set_prompt
-#' @export
+#' @noRd
+#' @keywords internal
 restore <- function() {
   if (prompt_env$in_use) return(invisible(FALSE))
   set_prompt(prompt_env$disabled_prompt)
@@ -267,14 +260,14 @@ restore <- function() {
   invisible(TRUE)
 }
 
-#' @rdname set_prompt
-#' @export
+#' @noRd
+#' @keywords internal
 toggle <- function() {
   if (prompt_env$in_use) suspend() else restore()
 }
 
-#' @rdname set_prompt
-#' @export
+#' @noRd
+#' @keywords internal
 prompt_error_hook <- function() {
   update_prompt(expr = NA, value = NA, ok = FALSE, visible = NA)
 

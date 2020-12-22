@@ -15,6 +15,8 @@
     + Use `gert`.
     + Remove Github/Gitlab token arguments.
     + No longer rely on `prompt`.
+* In `R/check_commit.R`,
+    + New function to check if commits were made in projects.
 
 # mctemplates 0.5.2
 
