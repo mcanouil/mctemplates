@@ -180,14 +180,20 @@ prompt_git <- function(...) {
   paste0(
     gert::git_branch(),
     if (nrow(gert::git_diff()) != 0) "*" else "",
-    if (ahead_behind$ahead == 1) clisymbols::symbol$arrow_up,
-    if (ahead_behind$behind == 1) clisymbols::symbol$arrow_down,
+    if (ahead_behind$ahead > 0) clisymbols::symbol$arrow_up,
+    if (ahead_behind$behind > 0) clisymbols::symbol$arrow_down,
     " > "
   )
 }
 
-#' @rdname rprofile
-#' @usage NULL
+#' Dynamic R Prompt
+#'
+#' Set the R prompt dynamically, from a function.
+#'
+#' @docType package
+#' @name prompt
+NULL
+
 prompt_env <- new.env()
 prompt_env$prompt <- "> "
 prompt_env$task_id <- NA
@@ -196,9 +202,6 @@ prompt_env$default_prompt <- prompt_env$prompt
 prompt_env$disabled_prompt <- NULL
 prompt_env$in_use <- TRUE
 
-
-#' @rdname rprofile
-#' @export
 .onLoad <- function(libname, pkgname) {
   assign("task_id", addTaskCallback(update_callback), envir = prompt_env)
   if (interactive()) {
@@ -207,22 +210,70 @@ prompt_env$in_use <- TRUE
   }
 }
 
-#' @rdname rprofile
-#' @export
 update_callback <- function(expr, value, ok, visible) {
   try(suppressWarnings(update_prompt(expr, value, ok, visible)))
   TRUE
 }
 
-#' @rdname rprofile
-#' @export
 .onUnload <- function(libpath) {
   removeTaskCallback(prompt_env$task_id)
   assign("task_id", NA, envir = prompt_env)
   if (interactive()) options(error = prompt_env$error)
 }
 
-#' @rdname rprofile
+update_prompt <- function(...) {
+  mine <- prompt_env$prompt
+  if (is.function(mine)) mine <- mine(...)
+  if (is.string(mine)) options(prompt = mine)
+}
+
+#' Set and control the prompt
+#'
+#' @param value A character string for a static prompt, or
+#'   a function that is called after the evaluation every expression
+#'   typed at the R prompt. The function should always return a
+#'   character scalar.
+#'
+#' @details
+#' Function \code{update_prompt()} is used to replace the default \R
+#' prompt with a custom prompt.   A custom prompt can be disabled
+#' with \code{suspend()} and then re-enable with \code{restore()}.
+#' Function \code{toggle()} toggles between the two.
+#'
+#' @export
+set_prompt <- function(value) {
+  stopifnot(is.function(value) || is.string(value))
+  assign("prompt", value, envir = prompt_env)
+  update_prompt(NULL, NULL, TRUE, FALSE)
+}
+
+
+#' @rdname set_prompt
+#' @export
+suspend <- function() {
+  if (!prompt_env$in_use) return(invisible(FALSE))
+  prompt_env$disabled_prompt <- prompt_env$prompt
+  set_prompt(prompt_env$default_prompt)
+  prompt_env$in_use <- FALSE
+  invisible(TRUE)
+}
+
+#' @rdname set_prompt
+#' @export
+restore <- function() {
+  if (prompt_env$in_use) return(invisible(FALSE))
+  set_prompt(prompt_env$disabled_prompt)
+  prompt_env$in_use <- TRUE
+  invisible(TRUE)
+}
+
+#' @rdname set_prompt
+#' @export
+toggle <- function() {
+  if (prompt_env$in_use) suspend() else restore()
+}
+
+#' @rdname set_prompt
 #' @export
 prompt_error_hook <- function() {
   update_prompt(expr = NA, value = NA, ok = FALSE, visible = NA)
@@ -237,45 +288,3 @@ prompt_error_hook <- function() {
 is.string <- function(x) {
   is.character(x) && length(x) == 1 && !is.na(x)
 }
-
-#' @rdname rprofile
-#' @export
-update_prompt <- function(...) {
-  mine <- prompt_env$prompt
-  if (is.function(mine)) mine <- mine(...)
-  if (is.string(mine)) options(prompt = mine)
-}
-
-#' @rdname rprofile
-#' @export
-set_prompt <- function(value) {
-  stopifnot(is.function(value) || is.string(value))
-  assign("prompt", value, envir = prompt_env)
-  update_prompt(NULL, NULL, TRUE, FALSE)
-}
-
-#' @rdname rprofile
-#' @export
-suspend <- function() {
-  if (!prompt_env$in_use) return(invisible(FALSE))
-  prompt_env$disabled_prompt <- prompt_env$prompt
-  set_prompt(prompt_env$default_prompt)
-  prompt_env$in_use <- FALSE
-  invisible(TRUE)
-}
-
-#' @rdname rprofile
-#' @export
-restore <- function() {
-  if (prompt_env$in_use) return(invisible(FALSE))
-  set_prompt(prompt_env$disabled_prompt)
-  prompt_env$in_use <- TRUE
-  invisible(TRUE)
-}
-
-#' @rdname rprofile
-#' @export
-toggle <- function() {
-  if (prompt_env$in_use) suspend() else restore()
-}
-
