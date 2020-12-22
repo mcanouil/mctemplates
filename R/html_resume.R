@@ -6,6 +6,7 @@
 #' @param ...,css,template,number_sections See `html_paged`.
 #' @return An R Markdown output format.
 #' @keywords internal
+#' @noRd
 # html_resume <- function(
 #   ...,
 #   self_contained = TRUE,
