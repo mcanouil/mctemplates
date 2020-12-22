@@ -11,6 +11,9 @@
     + Update default `DESCRIPTION`.
 * In `R/theme_black.R`,
     + No documentation for internals.
+* In `R/rprofile.R`,
+    + Use `gert`.
+    + Remove Github/Gitlab token arguments.
 
 # mctemplates 0.5.2
 
