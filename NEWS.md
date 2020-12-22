@@ -1,3 +1,17 @@
+# mctemplates 0.6.0
+
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Remove PowerPoint template.
+* In `R/create_project.R`,
+    + Use `gert`.
+    + Add "LineEndingConversion" to `.Rproj`.
+* In `R/create_ioslides.R`,
+    + Use `gert`.
+    + Add "LineEndingConversion" to `.Rproj`.
+    + Update default `DESCRIPTION`.
+* In `R/theme_black.R`,
+    + No documentation for internals.
+
 # mctemplates 0.5.2
 
 * In `R/ioslides_presentation.R`,
