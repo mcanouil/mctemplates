@@ -319,6 +319,7 @@ ggsave <- function(
 #'     a hexadecimal string of the form "#rrggbb" or "#rrggbbaa" (see rgb).
 #'
 #' @keywords internal
+#' @noRd
 compute_brightness <- function(colour) {
   ((sum(range(grDevices::col2rgb(colour)))) * 100 * 0.5) / 255
 }
@@ -328,6 +329,7 @@ compute_brightness <- function(colour) {
 #'
 #' @param .theme a theme (a list of theme elements)
 #' @keywords internal
+#' @noRd
 dark_mode <- function(.theme) {
   stopifnot(is.theme(.theme))
   geom_names <- utils::apropos("^Geom", ignore.case = FALSE)
