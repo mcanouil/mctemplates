@@ -37,6 +37,7 @@ create_ioslides <- function(path, git = TRUE) {
     "LaTeX: pdfLaTeX",
     "",
     "AutoAppendNewline: Yes",
+    "LineEndingConversion: Posix",
     "",
     "QuitChildProcessesOnExit: Yes"
   )
@@ -65,8 +66,7 @@ create_ioslides <- function(path, git = TRUE) {
 
   rbuildignore <- c(
     "^.*\\.Rproj$",
-    "^\\.Rproj\\.user$",
-    "^\\.travis\\.yml$"
+    "^\\.Rproj\\.user$"
   )
   writeLines(rbuildignore, con = usethis::proj_path(".Rbuildignore"))
 
@@ -75,10 +75,13 @@ create_ioslides <- function(path, git = TRUE) {
     paste("Title:", basename(path)),
     "Version: 0.0.1",
     "Imports:",
-    "    tidyverse,",
     "    rmarkdown,",
     "    knitr,",
-    "    kableExtra"
+    "    mctemplates,",
+    "    gt,",
+    "    here",
+    "Remotes:",
+    "    github::mcanouil/mctemplates"
   )
   writeLines(description, con = usethis::proj_path("DESCRIPTION"))
 
@@ -98,9 +101,8 @@ create_ioslides <- function(path, git = TRUE) {
   writeLines(readme, con = usethis::proj_path("README.md"))
 
   if (git) {
-    git2r::init(usethis::proj_get())
-    git2r::add(usethis::proj_get(), "*")
-    git2r::commit(repo = usethis::proj_get(), message = "Init project", all = TRUE)
+    gert::git_init(path = usethis::proj_get())
+    gert::git_commit_all(repo = usethis::proj_get(), message = "Init project")
   }
 
   invisible(usethis::proj_get())
