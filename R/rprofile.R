@@ -104,11 +104,12 @@ mcprofile <- function(
   set_option("rlang_backtrace_on_error")
 
   if (nchar(system.file(package = "prompt", lib.loc = c(Sys.getenv("R_LIBS"), Sys.getenv("R_LIBS_USER")))) != 0) {
-    prompt::set_prompt(prompt::prompt_git)
+
+    set_prompt(prompt_git)
     cli::cat_line(
       glue::glue(.sep = " ",
         '{crayon::green(clisymbols::symbol$tick)}',
-        '{crayon::green("prompt")} set to {crayon::blue("prompt::prompt_git")}'
+        '{crayon::green("prompt")} set to {crayon::blue("prompt_git")}'
       )
     )
   }
@@ -167,3 +168,114 @@ mcprofile <- function(
   cli::cat_line(crayon::white(cli::rule(width = 80)))
   invisible()
 }
+
+#' @rdname rprofile
+#' @export
+prompt_git <- function(...) {
+  not_git <- inherits(try(gert::git_find(), silent = TRUE), "try-error")
+  if (not_git) return("> ")
+
+  ahead_behind <- gert::git_ahead_behind()
+
+  paste0(
+    gert::git_branch(),
+    if (nrow(gert::git_diff()) != 0) "*" else "",
+    if (ahead_behind$ahead == 1) clisymbols::symbol$arrow_up,
+    if (ahead_behind$behind == 1) clisymbols::symbol$arrow_down,
+    " > "
+  )
+}
+
+#' @rdname rprofile
+#' @usage NULL
+prompt_env <- new.env()
+prompt_env$prompt <- "> "
+prompt_env$task_id <- NA
+prompt_env$error <- NULL
+prompt_env$default_prompt <- prompt_env$prompt
+prompt_env$disabled_prompt <- NULL
+prompt_env$in_use <- TRUE
+
+
+#' @rdname rprofile
+#' @export
+.onLoad <- function(libname, pkgname) {
+  assign("task_id", addTaskCallback(update_callback), envir = prompt_env)
+  if (interactive()) {
+    assign("error", getOption("error"), envir = prompt_env)
+    options(error = prompt_error_hook)
+  }
+}
+
+#' @noRd
+#' @keywords internal
+update_callback <- function(expr, value, ok, visible) {
+  try(suppressWarnings(update_prompt(expr, value, ok, visible)))
+  TRUE
+}
+
+#' @rdname rprofile
+#' @export
+.onUnload <- function(libpath) {
+  removeTaskCallback(prompt_env$task_id)
+  assign("task_id", NA, envir = prompt_env)
+  if (interactive()) options(error = prompt_env$error)
+}
+
+#' @noRd
+#' @keywords internal
+prompt_error_hook <- function() {
+  update_prompt(expr = NA, value = NA, ok = FALSE, visible = NA)
+
+  orig <- prompt_env$error
+  if (!is.null(orig) && is.function(orig)) orig()
+  if (!is.null(orig) && is.call(orig)) eval(orig)
+}
+
+#' @noRd
+#' @keywords internal
+is.string <- function(x) {
+  is.character(x) && length(x) == 1 && !is.na(x)
+}
+
+#' @noRd
+#' @keywords internal
+update_prompt <- function(...) {
+  mine <- prompt_env$prompt
+  if (is.function(mine)) mine <- mine(...)
+  if (is.string(mine)) options(prompt = mine)
+}
+
+#' @noRd
+#' @keywords internal
+set_prompt <- function(value) {
+  stopifnot(is.function(value) || is.string(value))
+  assign("prompt", value, envir = prompt_env)
+  update_prompt(NULL, NULL, TRUE, FALSE)
+}
+
+#' @noRd
+#' @keywords internal
+suspend <- function() {
+  if (!prompt_env$in_use) return(invisible(FALSE))
+  prompt_env$disabled_prompt <- prompt_env$prompt
+  set_prompt(prompt_env$default_prompt)
+  prompt_env$in_use <- FALSE
+  invisible(TRUE)
+}
+
+#' @noRd
+#' @keywords internal
+restore <- function() {
+  if (prompt_env$in_use) return(invisible(FALSE))
+  set_prompt(prompt_env$disabled_prompt)
+  prompt_env$in_use <- TRUE
+  invisible(TRUE)
+}
+
+#' @noRd
+#' @keywords internal
+toggle <- function() {
+  if (prompt_env$in_use) suspend() else restore()
+}
+

@@ -34,10 +34,7 @@ Suggests:
     knitr (>= 1.30),
     reprex (>= 0.3.0),
     sessioninfo (>= 1.1.1),
-    testthat (>= 3.0.1),
-    prompt (>= 1.0.0)
-Remotes:
-    github::gaborcsardi/prompt
+    testthat (>= 3.0.1)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
