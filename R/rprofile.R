@@ -207,8 +207,8 @@ prompt_env$in_use <- TRUE
   }
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 update_callback <- function(expr, value, ok, visible) {
   try(suppressWarnings(update_prompt(expr, value, ok, visible)))
   TRUE
@@ -222,8 +222,8 @@ update_callback <- function(expr, value, ok, visible) {
   if (interactive()) options(error = prompt_env$error)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 prompt_error_hook <- function() {
   update_prompt(expr = NA, value = NA, ok = FALSE, visible = NA)
 
@@ -238,24 +238,24 @@ is.string <- function(x) {
   is.character(x) && length(x) == 1 && !is.na(x)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 update_prompt <- function(...) {
   mine <- prompt_env$prompt
   if (is.function(mine)) mine <- mine(...)
   if (is.string(mine)) options(prompt = mine)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 set_prompt <- function(value) {
   stopifnot(is.function(value) || is.string(value))
   assign("prompt", value, envir = prompt_env)
   update_prompt(NULL, NULL, TRUE, FALSE)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 suspend <- function() {
   if (!prompt_env$in_use) return(invisible(FALSE))
   prompt_env$disabled_prompt <- prompt_env$prompt
@@ -264,8 +264,8 @@ suspend <- function() {
   invisible(TRUE)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 restore <- function() {
   if (prompt_env$in_use) return(invisible(FALSE))
   set_prompt(prompt_env$disabled_prompt)
@@ -273,8 +273,8 @@ restore <- function() {
   invisible(TRUE)
 }
 
-#' @noRd
-#' @keywords internal
+#' @rdname rprofile
+#' @export
 toggle <- function() {
   if (prompt_env$in_use) suspend() else restore()
 }
