@@ -14,6 +14,7 @@
 * In `R/rprofile.R`,
     + Use `gert`.
     + Remove Github/Gitlab token arguments.
+    + No longer rely on `prompt`.
 
 # mctemplates 0.5.2
 
