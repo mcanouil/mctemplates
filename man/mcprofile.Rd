@@ -12,7 +12,6 @@ mcprofile(
   .Renviron = "~/.Renviron",
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
-  R_MAX_NUM_DLLS = NULL,
   TZ = NULL
 )
 }
@@ -30,8 +29,6 @@ mcprofile(
 \item{LANGUAGE}{Environment variable for language.}
 
 \item{R_LIBS_USER}{Environment variable for user library.}
-
-\item{R_MAX_NUM_DLLS}{Environment variable for the maximum number of DLLs to be loaded.}
 
 \item{TZ}{Environment variable for time zone.}
 }
