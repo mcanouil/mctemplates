@@ -7,7 +7,6 @@
 #' @param .Renviron Path to the `.Renviron` file.
 #' @param LANGUAGE Environment variable for language.
 #' @param R_LIBS_USER Environment variable for user library.
-#' @param R_MAX_NUM_DLLS Environment variable for the maximum number of DLLs to be loaded.
 #' @param TZ Environment variable for time zone.
 #'
 #' @return NULL
@@ -20,7 +19,6 @@ mcprofile <- function(
   .Renviron = "~/.Renviron",
   LANGUAGE = NULL,
   R_LIBS_USER = NULL,
-  R_MAX_NUM_DLLS = NULL,
   TZ = NULL
 ) {
   set_option <- function(x) {
@@ -66,7 +64,6 @@ mcprofile <- function(
   )
   env_var <- c(
     if (!is.null(LANGUAGE)) glue::glue("LANGUAGE='{LANGUAGE}'"),
-    if (!is.null(R_MAX_NUM_DLLS)) glue::glue("R_MAX_NUM_DLLS={R_MAX_NUM_DLLS}"),
     if (!is.null(TZ)) glue::glue("TZ='{TZ}'"),
     if (!is.null(R_LIBS_USER)) glue::glue("R_LIBS_USER={R_LIBS_USER}")
   )

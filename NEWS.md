@@ -1,3 +1,5 @@
+# mctemplates (development version)
+
 # mctemplates 0.6.0
 
 * In [rmarkdown templates](inst/rmarkdown/templates),
