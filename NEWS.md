@@ -1,3 +1,8 @@
+# mctemplates 0.6.2
+
+* In `NAMESPACE`,
+    + Fix old references.
+
 # mctemplates 0.6.1
 
 * In `R/rprofile.R`,
