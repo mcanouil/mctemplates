@@ -3,19 +3,26 @@ title: "A Title"
 subtitle: "A Subtitle"
 author: "Mickaël Canouil, *Ph.D.*"
 date: '`r format(Sys.time(), "%B %d, %Y")`'
-knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs"), intermediates_dir = here::here("outputs", gsub("\\.[^.]+$", "", basename(inputFile)))))
-output: mctemplates::ioslides_presentation
+knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs")))
+output: 
+  mctemplates::ioslides_presentation:
+    fig_width: 5.94
+    fig_height: 3.3
 params:
   project_directory: !r here::here()
-  output_directory: !r here::here("outputs", "ioslides")
 ---
+
+<style>
+ slide img {
+    max-width: 891px;
+    max-height: 495px;
+ }
+</style>
 
 ```{r setup, include = FALSE}
 ### Environment ====================================================================================
 options("width" = 110)
 project_name <- gsub("(.*)_.*", "\\1", basename(params[["project_directory"]]))
-output_directory <- params[["output_directory"]]
-dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
 
 
 ### Load packages ==================================================================================
@@ -46,7 +53,8 @@ opts_chunk$set(
   # results = "asis",
   fig.align = "center",
   width = getOption("width"),
-  comment = "#>"
+  comment = "#>", 
+  dev = "ragg_png"
 )
 
 
@@ -57,7 +65,21 @@ options(
   ggplot2.continuous.colour = function(...) scale_colour_viridis_c(..., begin = 0.15, end = 0.85),
   ggplot2.continuous.fill = function(...) scale_fill_viridis_c(..., begin = 0.15, end = 0.85)
 )
-theme_set(theme_black_md())
+theme_set(
+  theme_black(base_family = "Times") +
+  theme(
+    plot.title.position = "plot",
+    plot.caption.position = "plot",
+    plot.title = element_markdown(),
+    plot.subtitle = element_markdown(face = "italic", size = rel(0.8)),
+    plot.caption = element_markdown(face = "italic", size = rel(0.65)),
+    axis.title.x = element_markdown(),
+    axis.text.x = element_markdown(),
+    axis.title.y = element_markdown(),
+    axis.text.y = element_markdown(),
+    panel.grid = element_blank()
+  )
+)
 
 
 ### Source functions ===============================================================================

@@ -18,7 +18,6 @@ create_ioslides <- function(path, git = TRUE) {
     recursive = TRUE, showWarnings = FALSE, mode = "0775"
   )
 
-  usethis::use_directory("R")
   usethis::use_directory("docs")
 
   rproj <- c(
@@ -73,13 +72,18 @@ create_ioslides <- function(path, git = TRUE) {
   description <- c(
     paste("Package: ", basename(path)),
     paste("Title:", basename(path)),
-    "Version: 0.0.1",
+    "Version: 0.1.0",
     "Imports:",
-    "    rmarkdown,",
-    "    knitr,",
     "    mctemplates,",
-    "    gt,",
     "    here",
+    "    knitr",
+    "    rmarkdown,",
+    "    ragg",
+    "    ggplot2",
+    "    ggtext",
+    "    patchwork",
+    "    data.table",
+    "    gt,",
     "Remotes:",
     "    github::mcanouil/mctemplates"
   )
@@ -90,7 +94,7 @@ create_ioslides <- function(path, git = TRUE) {
       "rmarkdown", "templates", "ioslides", "skeleton", "skeleton.Rmd",
       package = "mctemplates"
     ),
-    to = usethis::proj_path("R", "index.Rmd")
+    to = usethis::proj_path("index.Rmd")
   )
 
   readme <- c(
@@ -102,6 +106,7 @@ create_ioslides <- function(path, git = TRUE) {
 
   if (git) {
     gert::git_init(path = usethis::proj_get())
+    gert::git_add(files = "*")
     gert::git_commit_all(repo = usethis::proj_get(), message = "Init project")
   }
 

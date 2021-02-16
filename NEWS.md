@@ -2,6 +2,12 @@
 
 * In `R/rprofile.R`,
     + Setup locales for Windows system.
+* In `R/create_ioslides.R`,
+    + Fix missing `gert::git_add`.
+    + Update default `DESCRIPTION`.
+    + Remove `R` directory.
+* In [rmarkdown templates](inst/rmarkdown/templates),
+    + Update ioslides to wide format for figures.
 
 # mctemplates 0.6.0
 
