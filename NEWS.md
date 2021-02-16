@@ -8,6 +8,8 @@
     + Remove `R` directory.
 * In [rmarkdown templates](inst/rmarkdown/templates),
     + Update ioslides to wide format for figures.
+* In `R/theme_black.R`,
+    + Remove non theme components.
 
 # mctemplates 0.6.0
 
