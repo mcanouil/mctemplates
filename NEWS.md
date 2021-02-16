@@ -1,4 +1,4 @@
-# mctemplates (development version)
+# mctemplates 0.6.1
 
 * In `R/rprofile.R`,
     + Setup locales for Windows system.
