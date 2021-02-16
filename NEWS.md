@@ -1,5 +1,8 @@
 # mctemplates (development version)
 
+* In `R/rprofile.R`,
+    + Setup locales for Windows system.
+
 # mctemplates 0.6.0
 
 * In [rmarkdown templates](inst/rmarkdown/templates),

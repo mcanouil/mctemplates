@@ -36,12 +36,13 @@ mcprofile <- function(
     width = 80
   )))
 
-  if (.Platform$OS.type == "unix" & !is.null(LANGUAGE)) {
-    cli::cat_line(
-      glue::glue(
-        '{crayon::red(clisymbols::symbol$bullet)} Set {crayon::blue("locales")}'
-      )
+
+  cli::cat_line(
+    glue::glue(
+      '{crayon::red(clisymbols::symbol$bullet)} Set {crayon::blue("locales")}'
     )
+  )
+  if (.Platform$OS.type == "unix" & !is.null(LANGUAGE)) {
     invisible(lapply(
       X = c(
         "LC_ALL", "LC_CTYPE", "LC_TIME", "LC_COLLATE", "LC_MONETARY",
@@ -49,13 +50,16 @@ mcprofile <- function(
       ),
       FUN = Sys.setlocale, locale = LANGUAGE
     ))
-    cli::cat_line(
-      glue::glue(.sep = " ",
-        "{crayon::green(clisymbols::symbol$tick)}",
-        "{crayon::green('locales')} set to {crayon::blue(LANGUAGE)}"
-      )
-    )
   }
+  if (.Platform$OS.type == "windows" & !is.null(LANGUAGE)) {
+    Sys.setlocale(category = "LC_ALL", locale = LANGUAGE)
+  }
+  cli::cat_line(
+    glue::glue(.sep = " ",
+      "{crayon::green(clisymbols::symbol$tick)}",
+      "{crayon::green('locales')} set to {crayon::blue(LANGUAGE)}"
+    )
+  )
 
   cli::cat_line(
     glue::glue(
